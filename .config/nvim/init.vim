@@ -70,7 +70,7 @@ autocmd VimEnter * if argc() == 0 && !exists('s:std_in') && v:this_session == ''
 let g:ale_fixers={
 	\ 'javascript': ['eslint'],
 	\ 'typescript': ['eslint'],
-  \ 'rust': ['rustfmt']
+	\ 'rust': ['rustfmt']
 	\ }
 let g:ale_fix_on_save=1
 

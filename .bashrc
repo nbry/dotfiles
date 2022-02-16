@@ -54,4 +54,4 @@ git_branch() {
 	git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
 }
 
-export PS1="[\w]\[$(tput sgr0)\]\[\033[38;5;9m\]\$(git_branch)\[$(tput sgr0)\] \n\[$(tput sgr0)\]\[\033[38;5;48m\]>\[$(tput sgr0)\] \[$(tput sgr0)\] "
+export PS1="[\w]\[$(tput sgr0)\]\[\033[38;5;9m\]\$(git_branch)\[$(tput sgr0)\] \n\[$(tput sgr0)\]\[\033[38;5;48m\]❯\[$(tput sgr0)\]\[$(tput sgr0)\] "
