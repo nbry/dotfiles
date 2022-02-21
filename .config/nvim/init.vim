@@ -20,6 +20,7 @@ Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/vim-vsnip'
+Plug 'simrat39/rust-tools.nvim' "rust inlay hints
 
 "Still Considering These:
 "Plug 'jelera/vim-javascript-syntax'  "alternative js syntax highlighting 2
@@ -183,7 +184,11 @@ endfunction
 
 
 "LSP:
-set completeopt=menu,menuone,noselect
+set completeopt=menuone,noselect,noinsert
+
+lua <<EOF
+require('lsp')
+EOF
 
 "lua require'lspconfig'.eslint.setup({})
 lua require'lspconfig'.pyright.setup({})
@@ -192,14 +197,10 @@ lua require'lspconfig'.tsserver.setup({})
 lua require'lspconfig'.sumneko_lua.setup({})
 
 nnoremap <leader>gd :lua vim.lsp.buf.definition()<CR>
-nnoremap <leader>rn: :lua vim.lsp.buf.rename()<CR>
+nnoremap <leader>rn :lua vim.lsp.buf.rename()<CR>
 nnoremap <leader>D :lua vim.lsp.buf.type_definition()<CR>
 nnoremap <C-k> :lua vim.lsp.buf.signature_help()<CR>
 nnoremap K :lua vim.lsp.buf.hover()<CR>
-
-lua <<EOF
-require('lsp')
-EOF
 
 let g:completion_chain_complete_list = {
     \ 'default' : {

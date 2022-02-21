@@ -2,7 +2,7 @@ local cmp = require'cmp'
 
 cmp.setup({
   completion = {
-	   completeopt = 'menu,menuone,noinsert'
+	   completeopt = 'menuone,noinsert,noselect'
 	},
   snippet = {
     -- REQUIRED - you must specify a snippet engine

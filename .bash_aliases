@@ -5,6 +5,7 @@ alias setbackground="feh --bg-scale"
 alias dualscreen="bash ~/.screenlayout/dual-lg.sh"
 alias singlescreen="bash ~/.screenlayout/single-fw.sh"
 alias vim="nvim"
+alias nv="nvim"
 
 
 ## config
