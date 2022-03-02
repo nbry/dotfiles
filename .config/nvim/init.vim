@@ -1,15 +1,13 @@
 call plug#begin()
-Plug 'APZelos/blamer.nvim'       "blamer in the gutter
-Plug 'airblade/vim-gitgutter'    "git diffs on the side
-Plug 'ctrlpvim/ctrlp.vim'        "ctrl+p with ag searching
-Plug 'itchyny/lightline.vim'     "pretty bottom line
-Plug 'mboughaba/i3config.vim'    "syntax highlighting for i3 config
-Plug 'gruvbox-community/gruvbox' "theme
-Plug 'pangloss/vim-javascript'   "alternative js syntax highlighting
-Plug 'preservim/nerdcommenter'   "space+C line commenting... ok.
-Plug 'preservim/nerdtree'        "file tree left side
-Plug 'tmsvg/pear-tree'           "bracket completion
-Plug 'w0rp/ale'                  "linting/format on save
+Plug 'APZelos/blamer.nvim'            "in-line blamer
+Plug 'airblade/vim-gitgutter'         "git diffs in the gutter
+Plug 'ctrlpvim/ctrlp.vim'             "ctrl+p with ag searching
+Plug 'gruvbox-community/gruvbox'      "theme
+Plug 'itchyny/lightline.vim'          "pretty bottom line
+Plug 'mboughaba/i3config.vim'         "syntax highlighting for i3 config
+Plug 'pangloss/vim-javascript'        "alternative js syntax highlighting
+Plug 'preservim/nerdtree'             "file tree utility
+Plug 'w0rp/ale'                       "linting/format on save
 
 "LSP:
 Plug 'neovim/nvim-lspconfig'
@@ -20,16 +18,18 @@ Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/vim-vsnip'
-Plug 'simrat39/rust-tools.nvim' "rust inlay hints
+Plug 'simrat39/rust-tools.nvim'       "rust inlay hints
 
 "Still Considering These:
 "Plug 'jelera/vim-javascript-syntax'  "alternative js syntax highlighting 2
+"Plug 'preservim/nerdcommenter'       "space+C line commenting... ok.
+"Plug 'tmsvg/pear-tree'               "bracket completion
 "Plug 'sainnhe/sonokai'               "old theme used in vs code
-"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+"Plug 'Shougo/deoplete.nvim'          "completion, without lsp
 call plug#end()
 
 
-"TODO: LSP/(deloplete/omnifunc + ale) toggle?
+"TODO: LSP off -> deloplete on toggle?
 
 
 "set undodir=~/.vim/undodir "figure this mess out later
@@ -71,7 +71,8 @@ autocmd VimEnter * if argc() == 0 && !exists('s:std_in') && v:this_session == ''
 let g:ale_fixers={
 	\ 'javascript': ['eslint'],
 	\ 'typescript': ['eslint'],
-	\ 'rust': ['rustfmt']
+	\ 'rust': ['rustfmt'],
+	\ 'c': ['clang-format']
 	\ }
 let g:ale_fix_on_save=1
 
@@ -103,6 +104,7 @@ let g:ctrlp_custom_ignore={
 
 "GRUVBOX:
 let g:gruvbox_transparent_bg=1
+let g:gruvbox_bold=0
 autocmd VimEnter * hi Normal ctermbg=none
 colorscheme gruvbox
 
@@ -120,7 +122,6 @@ map <space> <leader>
 nnoremap Y y$
 
 " Keep centered when nexting, unfold line.
-" TODO: Learn how to use folds, lol
 nnoremap n nzzzv
 nnoremap N Nzzzv
 
@@ -137,6 +138,7 @@ inoremap ? ?<c-g>u
 "GENERAL:
 nnoremap <leader>qa :quitall<CR>
 nnoremap <leader>q1 :quitall!<CR>
+nnoremap <leader>q :q<CR>
 nnoremap <leader>w :w<CR>
 nnoremap <leader>x :x<CR>
 
@@ -191,6 +193,7 @@ require('lsp')
 EOF
 
 "lua require'lspconfig'.eslint.setup({})
+lua require'lspconfig'.clangd.setup({})
 lua require'lspconfig'.pyright.setup({})
 lua require'lspconfig'.rust_analyzer.setup({})
 lua require'lspconfig'.tsserver.setup({})
