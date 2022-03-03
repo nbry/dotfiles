@@ -2,12 +2,16 @@ call plug#begin()
 Plug 'APZelos/blamer.nvim'            "in-line blamer
 Plug 'airblade/vim-gitgutter'         "git diffs in the gutter
 Plug 'ctrlpvim/ctrlp.vim'             "ctrl+p with ag searching
-Plug 'gruvbox-community/gruvbox'      "theme
+Plug 'preservim/nerdtree'             "file tree utility
+Plug 'tpope/vim-surround'             "surround utils
+Plug 'tpope/vim-commentary'           "comment utils
+Plug 'w0rp/ale'                       "linting/format on save
+
+"STYLE:
 Plug 'itchyny/lightline.vim'          "pretty bottom line
+Plug 'gruvbox-community/gruvbox'      "theme
 Plug 'mboughaba/i3config.vim'         "syntax highlighting for i3 config
 Plug 'pangloss/vim-javascript'        "alternative js syntax highlighting
-Plug 'preservim/nerdtree'             "file tree utility
-Plug 'w0rp/ale'                       "linting/format on save
 
 "LSP:
 Plug 'neovim/nvim-lspconfig'
@@ -20,16 +24,10 @@ Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'simrat39/rust-tools.nvim'       "rust inlay hints
 
-"Still Considering These:
-"Plug 'jelera/vim-javascript-syntax'  "alternative js syntax highlighting 2
-"Plug 'preservim/nerdcommenter'       "space+C line commenting... ok.
+"STILL CONSIDERING:
 "Plug 'tmsvg/pear-tree'               "bracket completion
-"Plug 'sainnhe/sonokai'               "old theme used in vs code
 "Plug 'Shougo/deoplete.nvim'          "completion, without lsp
 call plug#end()
-
-
-"TODO: LSP off -> deloplete on toggle?
 
 
 "set undodir=~/.vim/undodir "figure this mess out later
@@ -60,7 +58,6 @@ set noshowmode
 "PRESERVIM:
 let g:NERDTreeShowHidden=1 "Show hidden files
 let g:NERDTreeNatualSort=1 "Avoid weird sorting
-let g:NERDCreateDefaultMappings=1
 
 " Start NERDTree, unless a file or session is specified, eg. vim -S session_file.vim.
 autocmd StdinReadPre * let s:std_in=1
@@ -79,7 +76,7 @@ let g:ale_fix_on_save=1
 
 "GIT:
 let g:blamer_enabled=0
-let g:blamer_show_in_insert_modes = 0
+let g:blamer_show_in_insert_modes=0
 let g:blamer_delay=3000
 
 
@@ -109,23 +106,27 @@ autocmd VimEnter * hi Normal ctermbg=none
 colorscheme gruvbox
 
 
+"GITGUTTER:
+set signcolumn=yes
+highlight SignColumn				    ctermbg=None
+highlight GitGutterAdd			    ctermbg=None ctermfg=Green
+highlight GitGutterChange		    ctermbg=None ctermfg=Yellow
+highlight GitGutterDelete		    ctermbg=None ctermfg=Red
+highlight GitGutterChangeDelete ctermbg=None ctermfg=Cyan
+
+
 "MAP LEADER:
 nnoremap <SPACE> <Nop>
 vnoremap <SPACE> <Nop>
 let mapleader='\<space>' "this just works...
 map <space> <leader>
 
-
-"VIM IS ACTUALLY TERRIBLE:
-
-" Capital Y - behave like other capitals (C, D, etc.)
+"Capital Y - behave like other capitals (C, D, etc.)
 nnoremap Y y$
 
-" Keep centered when nexting, unfold line.
+"Keep centered
 nnoremap n nzzzv
 nnoremap N Nzzzv
-
-" Combine line, stay centered.
 nnoremap J mzJ`z
 
 "Undo break points
@@ -135,10 +136,10 @@ inoremap ! !<c-g>u
 inoremap ? ?<c-g>u
 
 
-"GENERAL:
+"QUIT:
 nnoremap <leader>qa :quitall<CR>
 nnoremap <leader>q1 :quitall!<CR>
-nnoremap <leader>q :q<CR>
+nnoremap <leader>qq :q<CR>
 nnoremap <leader>w :w<CR>
 nnoremap <leader>x :x<CR>
 
