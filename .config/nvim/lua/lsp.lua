@@ -64,7 +64,7 @@ cmp.setup.cmdline(':', {
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
 
-servers = { 'pyright', 'rust_analyzer', 'sumneko_lua', 'tsserver' }
+servers = { 'clangd', 'pyright', 'rust_analyzer', 'sumneko_lua', 'tsserver' }
 -- removing 'eslint' for now
 for i, server in ipairs(servers) do
 	require('lspconfig')[server].setup {

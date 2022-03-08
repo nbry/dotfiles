@@ -1,18 +1,18 @@
 # vim: filetype=i3config
 set $mod Mod4
 set $refresh_i3status killall -SIGUSR1 i3status
-set $display1 DP-1-1
-set $display2 DP-1-2
+set $display1 $DISPLAY1
+set $display2 $DISPLAY2
+set $browser $BROWSER
 
 font pango:monospace 8
 
-exec --no-startup-id ~/.startup.sh
+exec_always --no-startup-id ~/.startup.sh
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
 exec --no-startup-id picom -b --experimental-backends
 exec --no-startup-id xinput set-prop "PIXA3854:00 093A:0274 Touchpad" "libinput Tapping Enabled" 1
-# exec_always --no-startup-id betterlockscreen -w
-exec_always --no-startup-id feh --bg-scale $HOME/Pictures/Wallpapers/evergreen-forest.jpg
+exec_always --no-startup-id feh --bg-scale $WALLPAPER
 
 # audio/brightness
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
@@ -27,6 +27,9 @@ floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec --no-startup-id alacritty
+
+# start browser
+bindsym $mod+Shift+Return exec --no-startup-id librewolf
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -59,7 +62,7 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # horizontal, vertical, fullscreen toggle
-bindsym $mod+Ctrl+l split h
+bindsym $mod+Ctrl+k split h
 bindsym $mod+Ctrl+j split v
 bindsym $mod+f fullscreen toggle
 
@@ -145,16 +148,16 @@ bindsym $mod+Ctrl+Shift+Right move workspace to output right
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
-        bindsym h resize shrink width 5px or 5 ppt
-        bindsym j resize grow height 5px or 5 ppt
-        bindsym k resize shrink height 5px or 5 ppt
-        bindsym l resize grow width 5px or 5 ppt
+        bindsym h resize shrink width 15px or 15ppt
+        bindsym j resize grow height 15px or 15ppt
+        bindsym k resize shrink height 15px or 15ppt
+        bindsym l resize grow width 15px or 15ppt
 
         # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 5px or 5 ppt
-        bindsym Down resize grow height 5px or 5 ppt
-        bindsym Up resize shrink height 5px or 5 ppt
-        bindsym Right resize grow width 5px or 5 ppt
+        bindsym Left resize shrink width 15px or 15ppt
+        bindsym Down resize grow height 15px or 15ppt
+        bindsym Up resize shrink height 15px or 15ppt
+        bindsym Right resize grow width 15px or 15ppt
 
         # back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default"

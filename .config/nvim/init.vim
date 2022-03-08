@@ -12,6 +12,9 @@ Plug 'itchyny/lightline.vim'          "pretty bottom line
 Plug 'gruvbox-community/gruvbox'      "theme
 Plug 'mboughaba/i3config.vim'         "syntax highlighting for i3 config
 Plug 'pangloss/vim-javascript'        "alternative js syntax highlighting
+Plug 'vim-python/python-syntax'
+
+"VIM JUPYTER
 
 "LSP:
 Plug 'neovim/nvim-lspconfig'
@@ -43,10 +46,10 @@ set nobackup
 set noerrorbells
 set noswapfile
 set nowrap
-set number relativenumber "display current line as actual line number
-set shiftwidth=2
-set splitright "NERDtree open split on right side
-set tabstop=2 softtabstop=2
+set number relativenumber
+set shiftwidth=4
+set splitright
+set tabstop=4 softtabstop=4
 set undofile
 
 
@@ -56,8 +59,9 @@ set noshowmode
 
 
 "PRESERVIM:
-let g:NERDTreeShowHidden=1 "Show hidden files
+let g:NERDTreeShowHidden=1
 let g:NERDTreeNatualSort=1 "Avoid weird sorting
+let g:NERDCreateDefaultMappings=1
 
 " Start NERDTree, unless a file or session is specified, eg. vim -S session_file.vim.
 autocmd StdinReadPre * let s:std_in=1
@@ -66,10 +70,11 @@ autocmd VimEnter * if argc() == 0 && !exists('s:std_in') && v:this_session == ''
 
 "LINTING:
 let g:ale_fixers={
-	\ 'javascript': ['eslint'],
-	\ 'typescript': ['eslint'],
-	\ 'rust': ['rustfmt'],
-	\ 'c': ['clang-format']
+	\ 'c': ['clang-format'],
+	\ 'javascript': ['eslint', 'prettier'],
+	\ 'typescript': ['eslint', 'prettier'],
+	\ 'python': ['autoflake', 'isort', 'black'],
+	\ 'rust': ['rustfmt']
 	\ }
 let g:ale_fix_on_save=1
 
@@ -77,11 +82,11 @@ let g:ale_fix_on_save=1
 "GIT:
 let g:blamer_enabled=0
 let g:blamer_show_in_insert_modes=0
-let g:blamer_delay=3000
+let g:blamer_delay=1500
 
 
 "TERMINAL:
-autocmd TermOpen * setlocal nonumber norelativenumber
+" autocmd TermOpen * setlocal nonumber norelativenumber
 
 
 "SEARCH:
@@ -102,17 +107,31 @@ let g:ctrlp_custom_ignore={
 "GRUVBOX:
 let g:gruvbox_transparent_bg=1
 let g:gruvbox_bold=0
-autocmd VimEnter * hi Normal ctermbg=none
 colorscheme gruvbox
+" autocmd VimEnter * hi Normal ctermbg=none
+highlight Normal guibg=NONE ctermbg=NONE
+let g:python_highlight_all = 1
 
 
 "GITGUTTER:
-set signcolumn=yes
-highlight SignColumn				    ctermbg=None
-highlight GitGutterAdd			    ctermbg=None ctermfg=Green
-highlight GitGutterChange		    ctermbg=None ctermfg=Yellow
-highlight GitGutterDelete		    ctermbg=None ctermfg=Red
+" set signcolumn=yes
+highlight SignColumn		    ctermbg=None
+highlight GitGutterAdd		    ctermbg=None ctermfg=Green
+highlight GitGutterChange	    ctermbg=None ctermfg=Yellow
+highlight GitGutterDelete	    ctermbg=None ctermfg=Red
 highlight GitGutterChangeDelete ctermbg=None ctermfg=Cyan
+
+
+"STRIP WHITESPACE ON SAVE:
+autocmd BufWritePre * :call StripTrailingWhitespaces()
+function! StripTrailingWhitespaces()
+    let _s=@/
+    let l = line('.')
+    let c = col('.')
+    %s/\s\+$//e
+    let @/=_s
+    call cursor(l, c)
+endfunction
 
 
 "MAP LEADER:
@@ -120,6 +139,7 @@ nnoremap <SPACE> <Nop>
 vnoremap <SPACE> <Nop>
 let mapleader='\<space>' "this just works...
 map <space> <leader>
+nnoremap <leader>sv :source $MYVIMRC<CR>
 
 "Capital Y - behave like other capitals (C, D, etc.)
 nnoremap Y y$
@@ -172,18 +192,6 @@ nnoremap <leader>p "+p
 nnoremap <leader>P "+P
 vnoremap <leader>p "+p
 vnoremap <leader>P "+P
-
-
-"STRIP WHITESPACE ON SAVE:
-autocmd BufWritePre * :call StripTrailingWhitespaces()
-function! StripTrailingWhitespaces()
-    let _s=@/
-    let l = line('.')
-    let c = col('.')
-    %s/\s\+$//e
-    let @/=_s
-    call cursor(l, c)
-endfunction
 
 
 "LSP:

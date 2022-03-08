@@ -1,18 +1,18 @@
 # Custom Aliases
-alias breset="source ~/.bashrc"
+alias zreset="source ~/.zshrc"
 alias pathy='echo $PATH | sed "s/:/\n/g"'
 alias setbackground="feh --bg-scale"
-alias dualscreen="bash ~/.screenlayout/dual-lg.sh"
-alias singlescreen="bash ~/.screenlayout/single-fw.sh"
+alias dualscreen="zsh ~/.screenlayout/dual-lg.sh"
+alias singlescreen="zsh ~/.screenlayout/single-fw.sh"
 alias vim="nvim"
 alias nv="nvim"
 alias tarxf="tar -xf"
 
 
 ## config
-alias configaliases="nvim ~/.bash_aliases"
+alias configaliases="nvim ~/.zsh_aliases"
 alias configbar="nvim ~/.config/i3status/config"
-alias configbashrc="nvim ~/.bashrc"
+alias configzshrc="nvim ~/.zshrc"
 alias configi3="nvim ~/.config/i3/config"
 alias configneovim="nvim ~/.config/nvim/init.vim"
 alias configpicom="nvim ~/.config/picom/picom.conf"
