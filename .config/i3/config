@@ -1,8 +1,8 @@
 # vim: filetype=i3config
 set $mod Mod4
 set $refresh_i3status killall -SIGUSR1 i3status
-set $display1 $DISPLAY1
-set $display2 $DISPLAY2
+set $display1 HDMI-0
+set $display2 DP-2
 set $browser $BROWSER
 
 font pango:monospace 8
@@ -12,7 +12,7 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
 exec --no-startup-id picom -b --experimental-backends
 exec --no-startup-id xinput set-prop "PIXA3854:00 093A:0274 Touchpad" "libinput Tapping Enabled" 1
-exec_always --no-startup-id feh --bg-scale $WALLPAPER
+exec_always --no-startup-id feh --bg-scale ~/Pictures/wallpapers/blurred-abstract.jpg
 
 # audio/brightness
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
@@ -124,15 +124,15 @@ bindsym $mod+Shift+0 move container to workspace number $ws10
 
 # assign workspaces to a certain monitor
 workspace 1 output $display1
+workspace 2 output $display1
 workspace 3 output $display1
+workspace 4 output $display1
 workspace 5 output $display1
-workspace 7 output $display1
-workspace 9 output $display1
 
-workspace 2 output $display2
-workspace 4 output $display2
 workspace 6 output $display2
+workspace 7 output $display2
 workspace 8 output $display2
+workspace 9 output $display2
 workspace 10 output $display2
 
 # move entire workspaces to different monitors
@@ -148,16 +148,16 @@ bindsym $mod+Ctrl+Shift+Right move workspace to output right
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
-        bindsym h resize shrink width 15px or 15ppt
-        bindsym j resize grow height 15px or 15ppt
-        bindsym k resize shrink height 15px or 15ppt
-        bindsym l resize grow width 15px or 15ppt
+        bindsym h resize shrink width 8px or 8ppt
+        bindsym j resize grow height 8px or 8ppt
+        bindsym k resize shrink height 8px or 8ppt
+        bindsym l resize grow width 8px or 8ppt
 
         # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 15px or 15ppt
-        bindsym Down resize grow height 15px or 15ppt
-        bindsym Up resize shrink height 15px or 15ppt
-        bindsym Right resize grow width 15px or 15ppt
+        bindsym Left resize shrink width 8px or 8ppt
+        bindsym Down resize grow height 8px or 8ppt
+        bindsym Up resize shrink height 8px or 8ppt
+        bindsym Right resize grow width 8px or 8ppt
 
         # back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default"
@@ -169,27 +169,31 @@ bindsym $mod+r mode "resize"
 
 # colors
 set $teal #0f644d
+set $teal-bright #17AA78
+set $mustard #a17112
 set $faded-red #F9533A
 
 # i3 bar/status
 bar {
-	position top
+	position bottom
   status_command i3status
 	colors {
-	  focused_workspace $teal $teal  #ffffff
+	  focused_workspace $mustard $mustard  #ffffff
 		urgent_workspace $faded-red $faded-red #ffffff
 	}
 }
 
 # custom
 gaps inner 3
+smart_gaps on
 focus_follows_mouse no
 popup_during_fullscreen smart
 # workspace_auto_back_and_forth yes
 
 # class                 border  backgr. text    indicator child_border
-client.focused          #50d189 #285577 #ffffff #50d189   #ffffff
+client.focused          #50d189 #285577 #ffffff #50d189   $mustard
 for_window [class=".*"] border pixel 1
+hide_edge_borders smart
 
 # floating window constraitns
 floating_minimum_size 75 x 50

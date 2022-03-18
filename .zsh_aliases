@@ -7,6 +7,7 @@ alias singlescreen="zsh ~/.screenlayout/single-fw.sh"
 alias vim="nvim"
 alias nv="nvim"
 alias tarxf="tar -xf"
+alias xclip="xclip -selection c"
 
 
 ## config
@@ -17,6 +18,7 @@ alias configi3="nvim ~/.config/i3/config"
 alias configneovim="nvim ~/.config/nvim/init.vim"
 alias configpicom="nvim ~/.config/picom/picom.conf"
 alias configterminal="nvim ~/.alacritty.yml"
+alias python="python3"
 
 
 ## git

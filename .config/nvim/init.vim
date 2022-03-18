@@ -2,6 +2,7 @@ call plug#begin()
 Plug 'APZelos/blamer.nvim'            "in-line blamer
 Plug 'airblade/vim-gitgutter'         "git diffs in the gutter
 Plug 'ctrlpvim/ctrlp.vim'             "ctrl+p with ag searching
+Plug 'mattn/emmet-vim'
 Plug 'preservim/nerdtree'             "file tree utility
 Plug 'tpope/vim-surround'             "surround utils
 Plug 'tpope/vim-commentary'           "comment utils
@@ -13,8 +14,6 @@ Plug 'gruvbox-community/gruvbox'      "theme
 Plug 'mboughaba/i3config.vim'         "syntax highlighting for i3 config
 Plug 'pangloss/vim-javascript'        "alternative js syntax highlighting
 Plug 'vim-python/python-syntax'
-
-"VIM JUPYTER
 
 "LSP:
 Plug 'neovim/nvim-lspconfig'
@@ -28,7 +27,7 @@ Plug 'hrsh7th/vim-vsnip'
 Plug 'simrat39/rust-tools.nvim'       "rust inlay hints
 
 "STILL CONSIDERING:
-"Plug 'tmsvg/pear-tree'               "bracket completion
+Plug 'tmsvg/pear-tree'               "bracket completion
 "Plug 'Shougo/deoplete.nvim'          "completion, without lsp
 call plug#end()
 
@@ -203,12 +202,13 @@ EOF
 
 "lua require'lspconfig'.eslint.setup({})
 lua require'lspconfig'.clangd.setup({})
+lua require'lspconfig'.html.setup({})
 lua require'lspconfig'.pyright.setup({})
 lua require'lspconfig'.rust_analyzer.setup({})
 lua require'lspconfig'.tsserver.setup({})
 lua require'lspconfig'.sumneko_lua.setup({})
 
-nnoremap <leader>gd :lua vim.lsp.buf.definition()<CR>
+nnoremap <leader>fd :lua vim.lsp.buf.definition()<CR>
 nnoremap <leader>rn :lua vim.lsp.buf.rename()<CR>
 nnoremap <leader>D :lua vim.lsp.buf.type_definition()<CR>
 nnoremap <C-k> :lua vim.lsp.buf.signature_help()<CR>
