@@ -193,6 +193,13 @@ vnoremap <leader>p "+p
 vnoremap <leader>P "+P
 
 
+"NAVIGATION
+nnoremap <A-h> <C-w>h
+nnoremap <A-j> <C-w>j
+nnoremap <A-k> <C-w>k
+nnoremap <A-l> <C-w>l
+
+
 "LSP:
 set completeopt=menuone,noselect,noinsert
 
