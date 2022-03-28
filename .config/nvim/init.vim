@@ -4,6 +4,7 @@ Plug 'airblade/vim-gitgutter'         "git diffs in the gutter
 Plug 'ctrlpvim/ctrlp.vim'             "ctrl+p with ag searching
 Plug 'mattn/emmet-vim'
 Plug 'preservim/nerdtree'             "file tree utility
+Plug 'tmsvg/pear-tree'                "bracket completion
 Plug 'tpope/vim-surround'             "surround utils
 Plug 'tpope/vim-commentary'           "comment utils
 Plug 'w0rp/ale'                       "linting/format on save
@@ -26,9 +27,11 @@ Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'simrat39/rust-tools.nvim'       "rust inlay hints
 
-"STILL CONSIDERING:
-Plug 'tmsvg/pear-tree'               "bracket completion
-"Plug 'Shougo/deoplete.nvim'          "completion, without lsp
+"TELESCOPE:
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+
 call plug#end()
 
 
@@ -46,9 +49,9 @@ set noerrorbells
 set noswapfile
 set nowrap
 set number relativenumber
-set shiftwidth=4
+set shiftwidth=2
 set splitright
-set tabstop=4 softtabstop=4
+set tabstop=2 softtabstop=2
 set undofile
 
 
@@ -107,7 +110,6 @@ let g:ctrlp_custom_ignore={
 let g:gruvbox_transparent_bg=1
 let g:gruvbox_bold=0
 colorscheme gruvbox
-" autocmd VimEnter * hi Normal ctermbg=none
 highlight Normal guibg=NONE ctermbg=NONE
 let g:python_highlight_all = 1
 
@@ -163,13 +165,6 @@ nnoremap <leader>w :w<CR>
 nnoremap <leader>x :x<CR>
 
 
-"NERDTree:
-nnoremap <leader>n :NERDTreeFocus<CR>
-nnoremap <C-n> :NERDTree<CR>
-nnoremap <C-t> :NERDTreeToggle<CR>
-nnoremap <C-f> :NERDTreeFind<CR>
-
-
 "REPLACE ALL:
 nnoremap <C-s> :%s/
 
@@ -193,34 +188,30 @@ vnoremap <leader>p "+p
 vnoremap <leader>P "+P
 
 
-"NAVIGATION
+"NAVIGATION:
 nnoremap <A-h> <C-w>h
 nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
 
 
+"NERDTree:
+nnoremap <A-n> :NERDTreeFocus<CR>
+nnoremap <A-r> :NERDTree<CR>
+nnoremap <A-t> :NERDTreeToggle<CR>
+nnoremap <A-f> :NERDTreeFind<CR>
+
+
 "LSP:
 set completeopt=menuone,noselect,noinsert
-
-lua <<EOF
-require('lsp')
-EOF
-
-"lua require'lspconfig'.eslint.setup({})
-lua require'lspconfig'.clangd.setup({})
-lua require'lspconfig'.html.setup({})
-lua require'lspconfig'.pyright.setup({})
-lua require'lspconfig'.rust_analyzer.setup({})
-lua require'lspconfig'.tsserver.setup({})
-lua require'lspconfig'.sumneko_lua.setup({})
-
 nnoremap <leader>fd :lua vim.lsp.buf.definition()<CR>
 nnoremap <leader>rn :lua vim.lsp.buf.rename()<CR>
 nnoremap <leader>D :lua vim.lsp.buf.type_definition()<CR>
 nnoremap <C-k> :lua vim.lsp.buf.signature_help()<CR>
 nnoremap K :lua vim.lsp.buf.hover()<CR>
 
+
+"CMP:
 let g:completion_chain_complete_list = {
     \ 'default' : {
     \   'default': [
@@ -228,3 +219,15 @@ let g:completion_chain_complete_list = {
     \],
     \   },
     \}
+
+
+"TELESCOPE:
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
+
+lua <<EOF
+require('config')
+EOF
