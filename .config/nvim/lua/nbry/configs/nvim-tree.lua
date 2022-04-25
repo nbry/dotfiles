@@ -7,7 +7,7 @@ vim.g.nvim_tree_icons = {
   default = "",
   symlink = "",
   git = {
-    unstaged = "",
+    unstaged = "🞄",
     staged = "S",
     unmerged = "",
     renamed = "➜",
@@ -21,6 +21,8 @@ vim.g.nvim_tree_icons = {
     empty = "",
     empty_open = "",
     symlink = "",
+    arrow_open = "▾",
+    arrow_closed = "▸",
   },
 }
 
@@ -48,10 +50,10 @@ nvim_tree.setup {
   open_on_tab = false,
   hijack_cursor = false,
   update_cwd = true,
-  update_to_buf_dir = {
-    enable = true,
-    auto_open = true,
-  },
+  -- update_to_buf_dir = {
+  --   enable = true,
+  --   auto_open = true,
+  -- },
   actions = {
     open_file = {
       resize_window = true
@@ -122,5 +124,3 @@ nvim_tree.setup {
 keymap("n", "<leader>c", ":NvimTreeCollapse<CR>", opts)
 keymap("n", "<C-n>", ":NvimTreeFocus<CR>", opts)
 keymap("n", "<C-t>", ":NvimTreeToggle<CR>", opts)
-
-vim.cmd "hi! def NvimTreeExecFile guifg=none guibg=none gui=NONE"

@@ -44,9 +44,6 @@ end
 -- Vimscript
 -- vim.cmd "autocmd VimEnter * hi Normal guibg=none ctermbg=none"
 vim.cmd [[
-  highlight SignColumn		        ctermbg=None
-  highlight Gitsigns              ctermbg=None
-
   autocmd BufWritePre * :call StripTrailingWhitespaces()
 
   function! StripTrailingWhitespaces()

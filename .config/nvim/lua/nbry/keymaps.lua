@@ -1,14 +1,8 @@
---   normal_mode = "n",
---   insert_mode = "i",
---   visual_mode = "v",
---   visual_block_mode = "x",
---   term_mode = "t",
---   command_mode = "c",
-
 local opts = { noremap = true, silent = true }
 local term_opts = { silent = true }
 local keymap = vim.api.nvim_set_keymap
 
+-- mapleader
 keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
@@ -69,4 +63,15 @@ keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
 keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
 keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 
+-- copy
+keymap("v", "<leader>y", '"+y', opts)
+keymap("n", "<leader>Y", '"+yg_', opts)
+keymap("n", "<leader>y", '"+y', opts)
+keymap("n", "<leader>yy", '"+yy', opts)
+
+-- paste
+keymap("v", "<leader>p", '"+p', opts)
+keymap("v", "<leader>P", '"+P', opts)
+keymap("n", "<leader>p", '"+p', opts)
+keymap("n", "<leader>P", '"+P', opts)
 

@@ -37,8 +37,11 @@ packer.init {
   },
 }
 
--- Install your plugins here
+-------------
+-- Plugins --
+-------------
 return packer.startup(function(use)
+  -- Theme
   use ({
     "sainnhe/everforest",
     config = function()
@@ -46,6 +49,7 @@ return packer.startup(function(use)
     end,
   })
 
+  -- Status line
   use ({
     "nvim-lualine/lualine.nvim",
     requires = { "kyazdani42/nvim-web-devicons", opt = true },
@@ -54,6 +58,7 @@ return packer.startup(function(use)
     end,
   })
 
+  -- Git symbols and blamer
   use {
     'lewis6991/gitsigns.nvim',
     config = function()
@@ -61,16 +66,18 @@ return packer.startup(function(use)
     end
   }
 
+  -- NvimTree
   use ({
       'kyazdani42/nvim-tree.lua',
-      requires = {
-        'kyazdani42/nvim-web-devicons', -- optional, for file icon
-      },
+      -- requires = {
+      --   'kyazdani42/nvim-web-devicons', -- optional, for file icon
+      -- },
       config = function()
         require "nbry.configs.nvim-tree"
       end,
   })
 
+  -- Transparency Everywhere
   use ({
      "xiyaowong/nvim-transparent",
       config = function()
@@ -78,13 +85,18 @@ return packer.startup(function(use)
       end,
   })
 
+  -- Syntax Highlighting
   use "mboughaba/i3config.vim"
-  use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
-  use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
   use "pangloss/vim-javascript"
+  use "vim-python/python-syntax"
+
+  -- Utilty
   use "tpope/vim-commentary"
   use "tmsvg/pear-tree"
-  use "vim-python/python-syntax"
+
+  -- Neovim Lua
+  use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
+  use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
   use "wbthomason/packer.nvim" -- Have packer manage itself
 
   -----------------------------------------------------------------------
