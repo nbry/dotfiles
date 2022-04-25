@@ -4,12 +4,16 @@ Plug 'airblade/vim-gitgutter'         "git diffs in the gutter
 Plug 'ctrlpvim/ctrlp.vim'             "ctrl+p with ag searching
 Plug 'mattn/emmet-vim'
 Plug 'preservim/nerdtree'             "file tree utility
+<<<<<<< HEAD:.config/nvim/init.vim
 Plug 'tmsvg/pear-tree'                "bracket completion
+=======
+Plug 'ryanoasis/vim-devicons'
+>>>>>>> chore: create base configs for lua:.config/nvim/old-vim/init.vim
 Plug 'tpope/vim-surround'             "surround utils
 Plug 'tpope/vim-commentary'           "comment utils
 Plug 'w0rp/ale'                       "linting/format on save
 
-"STYLE:
+" "STYLE:
 Plug 'itchyny/lightline.vim'          "pretty bottom line
 Plug 'gruvbox-community/gruvbox'      "theme
 Plug 'mboughaba/i3config.vim'         "syntax highlighting for i3 config
@@ -27,15 +31,20 @@ Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'simrat39/rust-tools.nvim'       "rust inlay hints
 
+<<<<<<< HEAD:.config/nvim/init.vim
 "TELESCOPE:
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 
+=======
+"STILL CONSIDERING:
+Plug 'tmsvg/pear-tree'               "bracket completion
+>>>>>>> chore: create base configs for lua:.config/nvim/old-vim/init.vim
 call plug#end()
 
 
-"set undodir=~/.vim/undodir "figure this mess out later
+"  set undodir=~/.vim/undodir "figure this mess out later
 set autoindent
 set autoread
 set background=dark
@@ -55,12 +64,11 @@ set tabstop=2 softtabstop=2
 set undofile
 
 
-"LIGHTLINE:
-set laststatus=2
-set noshowmode
+" "LIGHTLINE:
+ set laststatus=2
+ set noshowmode
 
-
-"PRESERVIM:
+" "PRESERVIM:
 let g:NERDTreeShowHidden=1
 let g:NERDTreeNatualSort=1 "Avoid weird sorting
 let g:NERDCreateDefaultMappings=1
@@ -88,7 +96,7 @@ let g:blamer_delay=1500
 
 
 "TERMINAL:
-" autocmd TermOpen * setlocal nonumber norelativenumber
+autocmd TermOpen * setlocal nonumber norelativenumber
 
 
 "SEARCH:
@@ -106,7 +114,7 @@ let g:ctrlp_custom_ignore={
   \ }
 
 
-"GRUVBOX:
+" "GRUVBOX:
 let g:gruvbox_transparent_bg=1
 let g:gruvbox_bold=0
 colorscheme gruvbox
@@ -116,10 +124,11 @@ let g:python_highlight_all = 1
 
 "GITGUTTER:
 " set signcolumn=yes
-highlight SignColumn		    ctermbg=None
-highlight GitGutterAdd		    ctermbg=None ctermfg=Green
-highlight GitGutterChange	    ctermbg=None ctermfg=Yellow
-highlight GitGutterDelete	    ctermbg=None ctermfg=Red
+highlight Normal guibg=NONE     ctermbg=NONE
+highlight SignColumn		        ctermbg=None
+highlight GitGutterAdd		      ctermbg=None ctermfg=Green
+highlight GitGutterChange	      ctermbg=None ctermfg=Yellow
+highlight GitGutterDelete	      ctermbg=None ctermfg=Red
 highlight GitGutterChangeDelete ctermbg=None ctermfg=Cyan
 
 
