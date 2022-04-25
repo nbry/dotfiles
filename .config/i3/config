@@ -169,10 +169,10 @@ bindsym $mod+r mode "resize"
 
 # colors
 set $teal #0f644d
-set $teal-bright #17AA78
+set $teal-bright #17aa78
 set $mustard #a17112
-set $faded-red #F9533A
-set $road-paint-yellow #dfb639
+set $faded-red #f9533a
+set $road-paint-yellow #f9ab00
 
 # i3 bar/status
 bar {

@@ -19,7 +19,7 @@ local myOptions = {
   scrolloff = 8,                           -- is one of my fav
   shiftwidth = 2,                          -- the number of spaces inserted for each indentation
   showmode = false,                        -- we don't need to see things like -- INSERT -- anymore
-  showtabline = 2,                         -- always show tabs
+  -- showtabline = 2,                         -- always show tabline at top
   sidescrolloff = 8,
   signcolumn = "yes",                      -- always show the sign column, otherwise it would shift the text each time
   smartcase = true,                        -- smart case
@@ -42,7 +42,6 @@ for k, v in pairs(myOptions) do
 end
 
 -- Vimscript
--- vim.cmd "autocmd VimEnter * hi Normal guibg=none ctermbg=none"
 vim.cmd [[
   autocmd BufWritePre * :call StripTrailingWhitespaces()
 
