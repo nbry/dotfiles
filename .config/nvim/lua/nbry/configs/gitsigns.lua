@@ -40,9 +40,9 @@ require("gitsigns").setup {
   },
 }
 
--- transparency
+-- transparency and colors
 vim.cmd [[
-  highlight GitSignsAdd guibg=none guifg=green
-  highlight GitSignsChange guibg=none guifg=purple
-  highlight GitSignsDelete guibg=none guifg=red
+  autocmd VimEnter * highlight GitSignsAdd    guibg=none guifg='#86d195'
+  autocmd VimEnter * highlight GitSignsChange guibg=none guifg='#bb86d1'
+  autocmd VimEnter * highlight GitSignsDelete guibg=none guifg='#d18686'
 ]]

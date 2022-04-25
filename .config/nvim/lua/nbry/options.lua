@@ -3,7 +3,7 @@
 local myOptions = {
   backup = false,                          -- creates a backup file
   clipboard = "unnamedplus",               -- allows neovim to access the system clipboard
-  cmdheight = 2,                           -- more space in the neovim command line for displaying messages
+  cmdheight = 1,                           -- more space in the neovim command line for displaying messages
   completeopt = { "menuone", "noselect" }, -- mostly just for cmp
   conceallevel = 0,                        -- so that `` is visible in markdown files
   cursorline = true,                       -- highlight the current line
@@ -42,12 +42,13 @@ for k, v in pairs(myOptions) do
 end
 
 -- Vimscript
-vim.cmd "autocmd VimEnter * hi Normal guibg=none ctermbg=none"
+-- vim.cmd "autocmd VimEnter * hi Normal guibg=none ctermbg=none"
 vim.cmd [[
   highlight SignColumn		        ctermbg=None
   highlight Gitsigns              ctermbg=None
 
   autocmd BufWritePre * :call StripTrailingWhitespaces()
+
   function! StripTrailingWhitespaces()
       let _s=@/
       let l = line('.')

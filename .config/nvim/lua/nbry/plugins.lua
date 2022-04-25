@@ -40,9 +40,9 @@ packer.init {
 -- Install your plugins here
 return packer.startup(function(use)
   use ({
-    "gruvbox-community/gruvbox",
+    "sainnhe/everforest",
     config = function()
-      require "nbry.configs.gruvbox"
+      require "nbry.configs.colorscheme"
     end,
   })
 
