@@ -1,4 +1,4 @@
--- :help options 
+-- :help options
 
 local myOptions = {
   backup = false,                          -- creates a backup file
@@ -19,7 +19,7 @@ local myOptions = {
   scrolloff = 8,                           -- is one of my fav
   shiftwidth = 2,                          -- the number of spaces inserted for each indentation
   showmode = false,                        -- we don't need to see things like -- INSERT -- anymore
-  showtabline = 0,                         -- always show tabs
+  showtabline = 2,                         -- always show tabs
   sidescrolloff = 8,
   signcolumn = "yes",                      -- always show the sign column, otherwise it would shift the text each time
   smartcase = true,                        -- smart case
@@ -40,3 +40,21 @@ local myOptions = {
 for k, v in pairs(myOptions) do
   vim.opt[k] = v
 end
+
+-- Vimscript
+vim.cmd "autocmd VimEnter * hi Normal guibg=none ctermbg=none"
+vim.cmd [[
+  highlight SignColumn		        ctermbg=None
+  highlight Gitsigns              ctermbg=None
+
+  autocmd BufWritePre * :call StripTrailingWhitespaces()
+  function! StripTrailingWhitespaces()
+      let _s=@/
+      let l = line('.')
+      let c = col('.')
+      %s/\s\+$//e
+      let @/=_s
+      call cursor(l, c)
+  endfunction
+]]
+

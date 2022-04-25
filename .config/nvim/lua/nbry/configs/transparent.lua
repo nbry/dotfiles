@@ -10,6 +10,7 @@ require("transparent").setup({
     "BufferLineBackground",
     "BufferLineSeparator",
     "BufferLineIndicatorSelected",
+    "SignColumn",
   },
   exclude = {}, -- table: groups you don't want to clear
 })

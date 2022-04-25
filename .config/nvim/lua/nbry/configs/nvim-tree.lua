@@ -52,6 +52,11 @@ nvim_tree.setup {
     enable = true,
     auto_open = true,
   },
+  actions = {
+    open_file = {
+      resize_window = true
+    }
+  },
   diagnostics = {
     enable = true,
     icons = {
@@ -84,7 +89,7 @@ nvim_tree.setup {
     height = 30,
     hide_root_folder = false,
     side = "left",
-    auto_resize = true,
+    auto_resize = false,
     mappings = {
       custom_only = false,
       list = {
@@ -93,8 +98,8 @@ nvim_tree.setup {
         { key = "v", cb = tree_cb "vsplit" },
       },
     },
-    number = true,
-    relativenumber = true,
+    number = false,
+    relativenumber = false,
   },
   trash = {
     cmd = "trash",
@@ -118,3 +123,4 @@ keymap("n", "<leader>c", ":NvimTreeCollapse<CR>", opts)
 keymap("n", "<C-n>", ":NvimTreeFocus<CR>", opts)
 keymap("n", "<C-t>", ":NvimTreeToggle<CR>", opts)
 
+vim.cmd "hi! def NvimTreeExecFile guifg=none guibg=none gui=NONE"

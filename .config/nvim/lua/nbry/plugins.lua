@@ -55,6 +55,13 @@ return packer.startup(function(use)
   })
 
   use {
+    'lewis6991/gitsigns.nvim',
+    config = function()
+      require "nbry.configs.gitsigns"
+    end
+  }
+
+  use ({
       'kyazdani42/nvim-tree.lua',
       requires = {
         'kyazdani42/nvim-web-devicons', -- optional, for file icon
@@ -62,15 +69,14 @@ return packer.startup(function(use)
       config = function()
         require "nbry.configs.nvim-tree"
       end,
-  }
+  })
 
-  use {
+  use ({
      "xiyaowong/nvim-transparent",
       config = function()
         require "nbry.configs.transparent"
       end,
-  }
-
+  })
 
   use "mboughaba/i3config.vim"
   use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
