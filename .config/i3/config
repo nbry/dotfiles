@@ -1,8 +1,8 @@
 # vim: filetype=i3config
 set $mod Mod4
 set $refresh_i3status killall -SIGUSR1 i3status
-set $display1 DP-0
-set $display2 HDMI-0
+set $display1 HDMI-0
+set $display2 DP-2
 set $browser $BROWSER
 
 font pango:monospace 8
@@ -12,7 +12,7 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
 exec_always --no-startup-id picom --config ~/.config/picom/picom.conf --experimental-backends
 exec --no-startup-id xinput set-prop "PIXA3854:00 093A:0274 Touchpad" "libinput Tapping Enabled" 1
-exec_always --no-startup-id feh --bg-scale ~/.dotfiles/wallpapers/blossom.jpg
+exec_always --no-startup-id betterlockscreen -w
 
 # audio/brightness
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
@@ -169,10 +169,10 @@ bindsym $mod+r mode "resize"
 
 # colors
 set $teal #0f644d
-set $teal-bright #17AA78
+set $teal-bright #17aa78
 set $mustard #a17112
-set $faded-red #F9533A
-set $road-paint-yellow #dfb639
+set $faded-red #f9533a
+set $road-paint-yellow #f9ab00
 
 # i3 bar/status
 bar {
