@@ -13,14 +13,14 @@ Plug 'tpope/vim-surround'             "surround utils
 Plug 'tpope/vim-commentary'           "comment utils
 Plug 'w0rp/ale'                       "linting/format on save
 
-" "STYLE:
+" STYLE
 Plug 'itchyny/lightline.vim'          "pretty bottom line
 Plug 'gruvbox-community/gruvbox'      "theme
 Plug 'mboughaba/i3config.vim'         "syntax highlighting for i3 config
 Plug 'pangloss/vim-javascript'        "alternative js syntax highlighting
 Plug 'vim-python/python-syntax'
 
-"LSP:
+" LSP
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-cmdline'
@@ -31,6 +31,7 @@ Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'simrat39/rust-tools.nvim'       "rust inlay hints
 
+<<<<<<< HEAD:.config/nvim/old-vim/init.vim
 <<<<<<< HEAD:.config/nvim/init.vim
 "TELESCOPE:
 Plug 'nvim-lua/plenary.nvim'
@@ -39,6 +40,9 @@ Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 
 =======
 "STILL CONSIDERING:
+=======
+" STILL CONSIDERING
+>>>>>>> wip: w0rp, and run formatter:.config/old-vim/init.vim
 Plug 'tmsvg/pear-tree'               "bracket completion
 >>>>>>> chore: create base configs for lua:.config/nvim/old-vim/init.vim
 call plug#end()
@@ -64,11 +68,11 @@ set tabstop=2 softtabstop=2
 set undofile
 
 
-" "LIGHTLINE:
+"LIGHTLINE
  set laststatus=2
  set noshowmode
 
-" "PRESERVIM:
+"PRESERVIM
 let g:NERDTreeShowHidden=1
 let g:NERDTreeNatualSort=1 "Avoid weird sorting
 let g:NERDCreateDefaultMappings=1
@@ -78,7 +82,7 @@ autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists('s:std_in') && v:this_session == '' | NERDTree | endif
 
 
-"LINTING:
+" LINTING
 let g:ale_fixers={
 	\ 'c': ['clang-format'],
 	\ 'javascript': ['eslint', 'prettier'],
@@ -89,17 +93,17 @@ let g:ale_fixers={
 let g:ale_fix_on_save=1
 
 
-"GIT:
+" GIT
 let g:blamer_enabled=0
 let g:blamer_show_in_insert_modes=0
 let g:blamer_delay=1500
 
 
-"TERMINAL:
+" TERMINAL
 autocmd TermOpen * setlocal nonumber norelativenumber
 
 
-"SEARCH:
+" SEARCH
 if executable('ag')
   set grepprg=ag\ --nogroup\ --nocolor
   let g:ctrlp_user_command='ag %s -l --nocolor -g ""'
@@ -114,7 +118,7 @@ let g:ctrlp_custom_ignore={
   \ }
 
 
-" "GRUVBOX:
+" GRUVBOX
 let g:gruvbox_transparent_bg=1
 let g:gruvbox_bold=0
 colorscheme gruvbox
@@ -122,7 +126,7 @@ highlight Normal guibg=NONE ctermbg=NONE
 let g:python_highlight_all = 1
 
 
-"GITGUTTER:
+" GITGUTTER
 " set signcolumn=yes
 highlight Normal guibg=NONE     ctermbg=NONE
 highlight SignColumn		        ctermbg=None
@@ -132,7 +136,7 @@ highlight GitGutterDelete	      ctermbg=None ctermfg=Red
 highlight GitGutterChangeDelete ctermbg=None ctermfg=Cyan
 
 
-"STRIP WHITESPACE ON SAVE:
+" STRIP WHITESPACE ON SAVE
 autocmd BufWritePre * :call StripTrailingWhitespaces()
 function! StripTrailingWhitespaces()
     let _s=@/
@@ -144,29 +148,29 @@ function! StripTrailingWhitespaces()
 endfunction
 
 
-"MAP LEADER:
+" MAP LEADER
 nnoremap <SPACE> <Nop>
 vnoremap <SPACE> <Nop>
 let mapleader='\<space>' "this just works...
 map <space> <leader>
 nnoremap <leader>sv :source $MYVIMRC<CR>
 
-"Capital Y - behave like other capitals (C, D, etc.)
+" Capital Y - behave like other capitals (C, D, etc.)
 nnoremap Y y$
 
-"Keep centered
+" Keep centered
 nnoremap n nzzzv
 nnoremap N Nzzzv
 nnoremap J mzJ`z
 
-"Undo break points
+" Undo break points
 inoremap , ,<c-g>u
 inoremap . .<c-g>u
 inoremap ! !<c-g>u
 inoremap ? ?<c-g>u
 
 
-"QUIT:
+" QUIT:
 nnoremap <leader>qa :quitall<CR>
 nnoremap <leader>q1 :quitall!<CR>
 nnoremap <leader>qq :q<CR>
@@ -174,42 +178,74 @@ nnoremap <leader>w :w<CR>
 nnoremap <leader>x :x<CR>
 
 
+<<<<<<< HEAD:.config/nvim/old-vim/init.vim
 "REPLACE ALL:
+=======
+" NERDTree:
+nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
+
+
+" REPLACE ALL
+>>>>>>> wip: w0rp, and run formatter:.config/old-vim/init.vim
 nnoremap <C-s> :%s/
 
 
-"RESIZE:
+" RESIZE
 nnoremap <leader>l :5winc ><CR>
 nnoremap <leader>k :5winc <<CR>
 
 
-"COPY:
+" COPY
 vnoremap <leader>y "+y
 nnoremap <leader>Y "+yg_
 nnoremap <leader>y "+y
 nnoremap <leader>yy "+yy
 
 
-"PASTE:
+" PASTE
 nnoremap <leader>p "+p
 nnoremap <leader>P "+P
 vnoremap <leader>p "+p
 vnoremap <leader>P "+P
 
 
+<<<<<<< HEAD:.config/nvim/old-vim/init.vim
 "NAVIGATION:
+=======
+" NAVIGATION
+>>>>>>> wip: w0rp, and run formatter:.config/old-vim/init.vim
 nnoremap <A-h> <C-w>h
 nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
 
 
+<<<<<<< HEAD:.config/nvim/old-vim/init.vim
 "NERDTree:
 nnoremap <A-n> :NERDTreeFocus<CR>
 nnoremap <A-r> :NERDTree<CR>
 nnoremap <A-t> :NERDTreeToggle<CR>
 nnoremap <A-f> :NERDTreeFind<CR>
 
+=======
+" LSP
+set completeopt=menuone,noselect,noinsert
+
+lua <<EOF
+require('lsp')
+EOF
+
+" lua require'lspconfig'.eslint.setup({})
+lua require'lspconfig'.clangd.setup({})
+lua require'lspconfig'.html.setup({})
+lua require'lspconfig'.pyright.setup({})
+lua require'lspconfig'.rust_analyzer.setup({})
+lua require'lspconfig'.tsserver.setup({})
+lua require'lspconfig'.sumneko_lua.setup({})
+>>>>>>> wip: w0rp, and run formatter:.config/old-vim/init.vim
 
 "LSP:
 set completeopt=menuone,noselect,noinsert
