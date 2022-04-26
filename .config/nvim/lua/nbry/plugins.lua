@@ -105,6 +105,24 @@ return packer.startup(function(use)
   -- Syntax Highlighting
   use "mboughaba/i3config.vim"
   use "vim-python/python-syntax"
+  use "pangloss/vim-javascript"
+
+  -- TelescopePlug 'nvim-lua/plenary.nvim'
+  use {
+    'nvim-telescope/telescope.nvim',
+    requires = { {'nvim-lua/plenary.nvim'} },
+    config = function()
+      require "nbry.configs.telescope"
+    end,
+  }
+
+  -- Telescope Optional
+  use "nvim-telescope/telescope-media-files.nvim"
+  use "BurntSushi/ripgrep"
+  use ({
+    "nvim-telescope/telescope-fzf-native.nvim",
+    run = "make"
+  })
 
   -- Utilty
   use "tpope/vim-commentary"
@@ -114,9 +132,6 @@ return packer.startup(function(use)
   use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
   use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
   use "wbthomason/packer.nvim" -- Have packer manage itself
-
-  -- Unused, for now
-  use "pangloss/vim-javascript"
 
   -----------------------------------------------------------------------
   -- Automatically set up your configuration after cloning packer.nvim --
