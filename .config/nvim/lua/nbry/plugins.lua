@@ -73,6 +73,35 @@ return packer.startup(function(use)
     end,
   })
 
+  -- LSP
+  use ({
+    "neovim/nvim-lspconfig",
+    config = function()
+      require "nbry.configs.lsp"
+    end,
+  })
+  use "williamboman/nvim-lsp-installer" -- simple to use language server installer
+
+  -- CMP
+  use ({
+    "hrsh7th/nvim-cmp",
+    config = function()
+      require "nbry.configs.cmp"
+    end,
+  })
+
+  -- LSP/CMP Extra
+  use "hrsh7th/cmp-buffer"
+  use "hrsh7th/cmp-cmdline"
+  use "hrsh7th/cmp-nvim-lsp"
+  use "hrsh7th/cmp-nvim-lua"
+  use "hrsh7th/cmp-path"
+
+  -- Snippets
+  use "saadparwaiz1/cmp_luasnip" -- snippet completions
+  use "L3MON4D3/LuaSnip" --snippet engine
+  use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
+
   -- Syntax Highlighting
   use "mboughaba/i3config.vim"
   use "vim-python/python-syntax"
@@ -80,7 +109,6 @@ return packer.startup(function(use)
   -- Utilty
   use "tpope/vim-commentary"
   use "tmsvg/pear-tree"
-
 
   -- Neovim Lua
   use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins

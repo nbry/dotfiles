@@ -11,6 +11,11 @@ require("transparent").setup({
     "BufferLineSeparator",
     "BufferLineIndicatorSelected",
     "SignColumn",
+    "NvimTreeSignColumn",
+    "NvimTreeDiagnosticsError",
+    "NvimTreeDiagnosticsHint",
+    "NvimTreeDiagnosticsInformation",
+    "NvimTreeDiagnosticsWarning",
   },
   exclude = {}, -- table: groups you don't want to clear
 })
