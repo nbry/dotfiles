@@ -19,10 +19,7 @@ packer.init({
 return packer.startup(function(use)
 	-- Theme
 	use({
-		-- "gruvbox-community/gruvbox",
-		-- "sainnhe/everforest",
 		"sainnhe/gruvbox-material",
-		-- "sainnhe/sonokai",
 		config = function()
 			require("nbry.configs.colorscheme")
 		end,
@@ -48,9 +45,9 @@ return packer.startup(function(use)
 	-- NvimTree
 	use({
 		"kyazdani42/nvim-tree.lua",
-		-- requires = {
-		--   'kyazdani42/nvim-web-devicons', -- optional, for file icon
-		-- },
+		requires = {
+			"kyazdani42/nvim-web-devicons", -- optional, for file icon
+		},
 		config = function()
 			require("nbry.configs.nvim-tree")
 		end,
@@ -80,6 +77,7 @@ return packer.startup(function(use)
 			require("nbry.configs.lsp")
 		end,
 	})
+
 	use("williamboman/nvim-lsp-installer") -- simple to use language server installer
 
 	-- CMP
@@ -98,16 +96,16 @@ return packer.startup(function(use)
 	use("hrsh7th/cmp-path")
 
 	-- Snippets
-	use("saadparwaiz1/cmp_luasnip") -- snippet completions
-	use("L3MON4D3/LuaSnip") --snippet engine
-	use("rafamadriz/friendly-snippets") -- a bunch of snippets to use
+	use("L3MON4D3/LuaSnip") -- engine
+	use("rafamadriz/friendly-snippets")
+	use("saadparwaiz1/cmp_luasnip")
 
 	-- Syntax Highlighting
 	use("mboughaba/i3config.vim")
 	use("vim-python/python-syntax")
 	use("pangloss/vim-javascript")
 
-	-- TelescopePlug 'nvim-lua/plenary.nvim'
+	-- Telescope
 	use({
 		"nvim-telescope/telescope.nvim",
 		requires = { { "nvim-lua/plenary.nvim" } },
@@ -116,7 +114,7 @@ return packer.startup(function(use)
 		end,
 	})
 
-	-- Telescope Optional
+	-- Telescope Plugins
 	use("nvim-telescope/telescope-media-files.nvim")
 	use("BurntSushi/ripgrep")
 	use({
@@ -134,6 +132,7 @@ return packer.startup(function(use)
 
 	-- Utilty
 	use("tpope/vim-commentary")
+	use("tpope/vim-surround")
 	use("tmsvg/pear-tree")
 
 	-- Neovim Lua

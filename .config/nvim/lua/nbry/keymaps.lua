@@ -38,6 +38,7 @@ keymap("n", "<leader>w", ":w<CR>", opts)
 
 -- replace all
 keymap("n", "<C-s>", ":%s/", opts)
+keymap("v", "<C-s>", ":s/", opts)
 
 -- source vimrc
 keymap("n", "<leader>sv", ":source $MYVIMRC<CR>", opts)

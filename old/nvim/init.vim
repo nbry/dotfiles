@@ -4,11 +4,8 @@ Plug 'airblade/vim-gitgutter'         "git diffs in the gutter
 Plug 'ctrlpvim/ctrlp.vim'             "ctrl+p with ag searching
 Plug 'mattn/emmet-vim'
 Plug 'preservim/nerdtree'             "file tree utility
-<<<<<<< HEAD:.config/nvim/init.vim
 Plug 'tmsvg/pear-tree'                "bracket completion
-=======
 Plug 'ryanoasis/vim-devicons'
->>>>>>> chore: create base configs for lua:.config/nvim/old-vim/init.vim
 Plug 'tpope/vim-surround'             "surround utils
 Plug 'tpope/vim-commentary'           "comment utils
 Plug 'w0rp/ale'                       "linting/format on save
@@ -31,20 +28,11 @@ Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'simrat39/rust-tools.nvim'       "rust inlay hints
 
-<<<<<<< HEAD:.config/nvim/old-vim/init.vim
-<<<<<<< HEAD:.config/nvim/init.vim
-"TELESCOPE:
+" TELESCOPE:
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 
-=======
-"STILL CONSIDERING:
-=======
-" STILL CONSIDERING
->>>>>>> wip: w0rp, and run formatter:.config/old-vim/init.vim
-Plug 'tmsvg/pear-tree'               "bracket completion
->>>>>>> chore: create base configs for lua:.config/nvim/old-vim/init.vim
 call plug#end()
 
 
@@ -178,9 +166,6 @@ nnoremap <leader>w :w<CR>
 nnoremap <leader>x :x<CR>
 
 
-<<<<<<< HEAD:.config/nvim/old-vim/init.vim
-"REPLACE ALL:
-=======
 " NERDTree:
 nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
@@ -189,7 +174,6 @@ nnoremap <C-f> :NERDTreeFind<CR>
 
 
 " REPLACE ALL
->>>>>>> wip: w0rp, and run formatter:.config/old-vim/init.vim
 nnoremap <C-s> :%s/
 
 
@@ -212,31 +196,12 @@ vnoremap <leader>p "+p
 vnoremap <leader>P "+P
 
 
-<<<<<<< HEAD:.config/nvim/old-vim/init.vim
-"NAVIGATION:
-=======
 " NAVIGATION
->>>>>>> wip: w0rp, and run formatter:.config/old-vim/init.vim
 nnoremap <A-h> <C-w>h
 nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
 
-
-<<<<<<< HEAD:.config/nvim/old-vim/init.vim
-"NERDTree:
-nnoremap <A-n> :NERDTreeFocus<CR>
-nnoremap <A-r> :NERDTree<CR>
-nnoremap <A-t> :NERDTreeToggle<CR>
-nnoremap <A-f> :NERDTreeFind<CR>
-
-=======
-" LSP
-set completeopt=menuone,noselect,noinsert
-
-lua <<EOF
-require('lsp')
-EOF
 
 " lua require'lspconfig'.eslint.setup({})
 lua require'lspconfig'.clangd.setup({})
@@ -245,9 +210,8 @@ lua require'lspconfig'.pyright.setup({})
 lua require'lspconfig'.rust_analyzer.setup({})
 lua require'lspconfig'.tsserver.setup({})
 lua require'lspconfig'.sumneko_lua.setup({})
->>>>>>> wip: w0rp, and run formatter:.config/old-vim/init.vim
 
-"LSP:
+" LSP
 set completeopt=menuone,noselect,noinsert
 nnoremap <leader>fd :lua vim.lsp.buf.definition()<CR>
 nnoremap <leader>rn :lua vim.lsp.buf.rename()<CR>
@@ -256,7 +220,7 @@ nnoremap <C-k> :lua vim.lsp.buf.signature_help()<CR>
 nnoremap K :lua vim.lsp.buf.hover()<CR>
 
 
-"CMP:
+" CMP
 let g:completion_chain_complete_list = {
     \ 'default' : {
     \   'default': [
@@ -266,7 +230,7 @@ let g:completion_chain_complete_list = {
     \}
 
 
-"TELESCOPE:
+" TELESCOPE
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
