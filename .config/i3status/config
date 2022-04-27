@@ -7,7 +7,7 @@
 # If the above line is not correctly displayed, fix your editor first!
 
 general {
-        colors = true 
+        colors = true
         interval = 5
 }
 
@@ -43,7 +43,7 @@ memory {
         threshold_degraded = "10%"
         format_degraded = "MEMORY: %free"
 }
-				
+
 ethernet _first_ {
         # if you use %speed, i3status requires root privileges
         format_up = "Ethernet"

@@ -18,7 +18,7 @@ alias configzshrc="nvim ~/.zshrc"
 alias configi3="nvim ~/.config/i3/config"
 alias configneovim="nvim ~/.config/nvim/lua/nbry/"
 alias configpicom="nvim ~/.config/picom/picom.conf"
-alias configterminal="nvim ~/.alacritty.yml"
+alias configterminal="nvim ~/.config/alacritty/alacritty.yml"
 alias python="python3"
 
 

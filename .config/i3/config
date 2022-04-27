@@ -14,6 +14,9 @@ exec_always --no-startup-id picom --config ~/.config/picom/picom.conf --experime
 exec --no-startup-id xinput set-prop "PIXA3854:00 093A:0274 Touchpad" "libinput Tapping Enabled" 1
 exec_always --no-startup-id betterlockscreen -w
 
+# toggle alacritty opacity
+bindsym $mod+Shift+o exec --no-startup-id toggle_opacity
+
 # audio/brightness
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
