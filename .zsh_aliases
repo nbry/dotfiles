@@ -1,13 +1,14 @@
 # Custom Aliases
 alias dualscreen="zsh ~/.screenlayout/dual-lg.sh"
 alias jssandbox="git clone git@github.com:nbry/js-sandbox.git"
+alias lg="ll -a --group-directories-first"
 alias nv="nvim"
 alias pathy='echo $PATH | sed "s/:/\n/g"'
 alias setbackground="feh --bg-scale"
 alias singlescreen="zsh ~/.screenlayout/single-fw.sh"
 alias tarxf="tar -xf"
-alias xclip="xclip -selection c"
 alias vim="nvim"
+alias xclip="xclip -selection c"
 alias zreset="source ~/.zshrc"
 
 

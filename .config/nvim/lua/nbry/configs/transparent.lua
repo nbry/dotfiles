@@ -27,12 +27,18 @@ require("transparent").setup({
 
 -- 🥲
 vim.cmd([[
-  highlight! DiagnosticFloatingError guibg=#None
-  highlight! DiagnosticFloatingHint  guibg=#None
-  highlight! DiagnosticFloatingInfo  guibg=#None
-  highlight! DiagnosticFloatingWarn  guibg=#None
+"red
+au VimEnter * highlight DiagnosticFloatingError guibg=none guifg='#d18686'
+au VimEnter * highlight GitSignsDelete          guibg=none guifg='#d18686'
 
-  highlight! GitSignsAdd             guibg=none guifg='#86d195'
-  highlight! GitSignsChange          guibg=none guifg='#bb86d1'
-  highlight! GitSignsDelete          guibg=none guifg='#d18686'
+"green
+au VimEnter * highlight DiagnosticFloatingHint  guibg=none guifg='#86d195'
+au VimEnter * highlight GitSignsAdd             guibg=none guifg='#86d195'
+
+"purple
+au VimEnter * highlight DiagnosticFloatingInfo  guibg=none guifg='#bb86d1'
+au VimEnter * highlight GitSignsChange          guibg=none guifg='#bb86d1'
+
+"yellow
+au VimEnter * highlight DiagnosticFloatingWarn  guibg=none guifg='#f9ab00'
 ]])

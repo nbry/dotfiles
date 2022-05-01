@@ -1,5 +1,7 @@
 vim.g["ale_fixers"] = {
 	c = { "clang-format" },
+	css = { "prettier" },
+	go = { "gofmt" },
 	javascript = { "eslint", "prettier" },
 	lua = { "stylua" },
 	typescript = { "eslint", "prettier" },

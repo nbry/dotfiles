@@ -1,8 +1,8 @@
 # vim: filetype=i3config
 set $mod Mod4
 set $refresh_i3status killall -SIGUSR1 i3status
-set $display1 HDMI-0
-set $display2 DP-2
+set $display1 DP-0
+set $display2 HDMI-0
 set $browser $BROWSER
 
 font pango:monospace 8
@@ -32,7 +32,10 @@ floating_modifier $mod
 bindsym $mod+Return exec --no-startup-id alacritty
 
 # start browser
-bindsym $mod+Shift+Return exec --no-startup-id firefox
+bindsym $mod+Shift+Return exec --no-startup-id librewolf
+
+# start flameshot
+bindsym $mod+Print exec --no-startup-id flameshot gui
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -171,19 +174,21 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # colors
+set $faded-red #f9533a
+set $maroon #65041d
+set $mustard #a17112
+set $lilac #9c6ac6
+set $road-paint-yellow #f9ab00
 set $teal #0f644d
 set $teal-bright #17aa78
-set $mustard #a17112
-set $faded-red #f9533a
-set $road-paint-yellow #f9ab00
 
 # i3 bar/status
 bar {
-	position bottom
+	position top
   status_command i3status
 	colors {
 	  focused_workspace $mustard $mustard  #ffffff
-		urgent_workspace $faded-red $faded-red #ffffff
+		urgent_workspace $lilac $lilac #ffffff
 	}
 }
 
