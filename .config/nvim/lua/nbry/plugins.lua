@@ -53,6 +53,15 @@ return packer.startup(function(use)
 		end,
 	})
 
+	-- Markdown preview
+	use({
+		"iamcco/markdown-preview.nvim",
+		run = function()
+			vim.fn["mkdp#util#install"]()
+		end,
+		ft = { "markdown" },
+	})
+
 	-- Transparency Everywhere
 	use({
 		"xiyaowong/nvim-transparent",

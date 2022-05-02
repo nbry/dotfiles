@@ -50,7 +50,6 @@ keymap("v", ">", ">gv", opts)
 -- move text up and down
 keymap("v", "<A-j>", ":m .+1<CR>==", opts)
 keymap("v", "<A-k>", ":m .-2<CR>==", opts)
-keymap("v", "p", '"_dP', opts)
 
 -- move text up and down
 keymap("x", "J", ":move '>+1<CR>gv-gv", opts)
@@ -75,3 +74,6 @@ keymap("v", "<leader>p", '"+p', opts)
 keymap("v", "<leader>P", '"+P', opts)
 keymap("n", "<leader>p", '"+p', opts)
 keymap("n", "<leader>P", '"+P', opts)
+
+-- in visual, replace highlighted with yanked/clipboard item
+keymap("v", "p", '"_dP', opts)
