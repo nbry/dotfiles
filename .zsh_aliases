@@ -5,7 +5,7 @@ alias lg="ll -a --group-directories-first"
 alias nv="nvim"
 alias pathy='echo $PATH | sed "s/:/\n/g"'
 alias setbackground="feh --bg-scale"
-alias singlescreen="zsh ~/.screenlayout/single-fw.sh"
+alias singlescreen="zsh ~/.screenlayout/single-tp.sh"
 alias tarxf="tar -xf"
 alias vim="nvim"
 alias xclip="xclip -selection c"
@@ -15,11 +15,13 @@ alias zreset="source ~/.zshrc"
 ## config
 alias configaliases="nvim ~/.zsh_aliases"
 alias configbar="nvim ~/.config/i3status/config"
-alias configzshrc="nvim ~/.zshrc"
+alias configdunst="nvim ~/.config/dunst/dunstrc"
 alias configi3="nvim ~/.config/i3/config"
 alias configneovim="nvim ~/.config/nvim/lua/nbry/"
 alias configpicom="nvim ~/.config/picom/picom.conf"
+# alias configpolybar="nvim ~/.config/polybar/config.ini"
 alias configterminal="nvim ~/.config/alacritty/alacritty.yml"
+alias configzshrc="nvim ~/.zshrc"
 alias python="python3"
 
 
