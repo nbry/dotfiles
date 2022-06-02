@@ -8,7 +8,7 @@ end
 packer.init({
 	display = {
 		open_fn = function()
-			return require("packer.util").float({ border = "single" })
+			return require("packer.util").float({ border = "double" })
 		end,
 	},
 })
@@ -25,7 +25,7 @@ return packer.startup(function(use)
 		end,
 	})
 
-	-- Status line
+	-- Lualine: Better status line
 	use({
 		"nvim-lualine/lualine.nvim",
 		requires = { "kyazdani42/nvim-web-devicons", opt = true },
@@ -34,7 +34,7 @@ return packer.startup(function(use)
 		end,
 	})
 
-	-- Git symbols and blamer
+	-- Git Symbols and Blamer
 	use({
 		"lewis6991/gitsigns.nvim",
 		config = function()
@@ -53,7 +53,7 @@ return packer.startup(function(use)
 		end,
 	})
 
-	-- Markdown preview
+	-- Markdown Preview: Live preview of mardown files in browser
 	use({
 		"iamcco/markdown-preview.nvim",
 		run = function()
@@ -79,7 +79,7 @@ return packer.startup(function(use)
 		end,
 	})
 
-	-- LSP
+	-- Language Server Protocol
 	use({
 		"neovim/nvim-lspconfig",
 		config = function()
@@ -87,7 +87,8 @@ return packer.startup(function(use)
 		end,
 	})
 
-	use("williamboman/nvim-lsp-installer") -- simple to use language server installer
+	-- Language Server Installation Tool
+	use("williamboman/nvim-lsp-installer")
 
 	-- CMP
 	use({
@@ -109,7 +110,7 @@ return packer.startup(function(use)
 	use("rafamadriz/friendly-snippets")
 	use("saadparwaiz1/cmp_luasnip")
 
-	-- Syntax Highlighting
+	-- Better Syntax Highlighting
 	use("mboughaba/i3config.vim")
 	use("vim-python/python-syntax")
 	use("pangloss/vim-javascript")
@@ -131,7 +132,7 @@ return packer.startup(function(use)
 		run = "make",
 	})
 
-	-- Ale
+	-- Ale: ...only using for lint/format on save
 	use({
 		"w0rp/ale",
 		config = function()
@@ -139,10 +140,17 @@ return packer.startup(function(use)
 		end,
 	})
 
-	-- Utilty
+	-- Pears: Bracket/Pair completion tool
+	use({
+		"steelsojka/pears.nvim",
+		config = function()
+			require("nbry.configs.pears")
+		end,
+	})
+
+	-- Vanilla Vim Utilties
 	use("tpope/vim-commentary")
 	use("tpope/vim-surround")
-	use("tmsvg/pear-tree")
 
 	-- Neovim Lua
 	use("nvim-lua/plenary.nvim") -- Useful lua functions used ny lots of plugins

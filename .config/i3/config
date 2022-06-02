@@ -20,6 +20,9 @@ exec_always --no-startup-id ~/.startup.sh
 # toggle alacritty opacity
 bindsym $mod+Shift+o exec --no-startup-id toggle_opacity
 
+# toggle window monitor
+bindsym $mod+Shift+w exec --no-startup-id i3-monitor-toggle
+
 # audio/brightness
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
