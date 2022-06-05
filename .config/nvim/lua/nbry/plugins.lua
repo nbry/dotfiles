@@ -53,6 +53,14 @@ return packer.startup(function(use)
 		end,
 	})
 
+	-- Scrollbar
+	use({
+		"petertriho/nvim-scrollbar",
+		config = function()
+			require("nbry.configs.nvim-scrollbar")
+		end,
+	})
+
 	-- Markdown Preview: Live preview of mardown files in browser
 	use({
 		"iamcco/markdown-preview.nvim",

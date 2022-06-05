@@ -2,13 +2,14 @@ vim.g["ale_fixers"] = {
 	c = { "clang-format" },
 	css = { "prettier" },
 	go = { "gofmt" },
+	html = { "prettier" },
 	javascript = { "eslint", "prettier" },
 	-- json = { "fixjson", "eslint" },
 	lua = { "stylua" },
-	typescript = { "eslint", "prettier" },
 	python = { "autoflake", "isort", "black" },
-	rust = { "rustfmt" },
 	ruby = { "rufo" },
+	rust = { "rustfmt" },
+	typescript = { "eslint", "prettier" },
 	yaml = { "prettier" },
 }
 
