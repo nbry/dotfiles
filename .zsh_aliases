@@ -1,7 +1,8 @@
 # Custom Aliases
 alias dualscreen="zsh ~/.screenlayout/dual-lg.sh"
 alias jssandbox="git clone git@github.com:nbry/js-sandbox.git"
-alias lg="ll -a --group-directories-first"
+alias tssandbox="git clone git@github.com:nbry/ts-sandbox.git"
+alias lg="ll --group-directories-first"
 alias nv="nvim"
 alias pathy='echo $PATH | sed "s/:/\n/g"'
 alias setbackground="feh --bg-scale"

@@ -1,4 +1,6 @@
 local colorscheme = "gruvbox-material"
+-- local colorscheme = "gruvbox-baby"
+-- local colorscheme = "tokyonight"
 
 -- gruvbox-material
 vim.g["gruvbox_material_transparent_background"] = 1

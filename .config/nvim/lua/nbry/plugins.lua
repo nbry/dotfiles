@@ -20,6 +20,8 @@ return packer.startup(function(use)
 	-- Theme
 	use({
 		"sainnhe/gruvbox-material",
+		-- "luisiacc/gruvbox-baby",
+		-- "folke/tokyonight.nvim",
 		config = function()
 			require("nbry.configs.colorscheme")
 		end,
@@ -113,6 +115,14 @@ return packer.startup(function(use)
 	use("hrsh7th/cmp-nvim-lua")
 	use("hrsh7th/cmp-path")
 
+	-- Extra Rust Tools (e.g. Inlay Hints)
+	use({
+		"simrat39/rust-tools.nvim",
+		config = function()
+			require("nbry.configs.rust-tools")
+		end,
+	})
+
 	-- Snippets
 	use("L3MON4D3/LuaSnip") -- engine
 	use("rafamadriz/friendly-snippets")
@@ -149,12 +159,12 @@ return packer.startup(function(use)
 	})
 
 	-- Pears: Bracket/Pair completion tool
-	use({
-		"steelsojka/pears.nvim",
-		config = function()
-			require("nbry.configs.pears")
-		end,
-	})
+	-- use({
+	-- 	"steelsojka/pears.nvim",
+	-- 	config = function()
+	-- 		require("nbry.configs.pears")
+	-- 	end,
+	-- })
 
 	-- Vanilla Vim Utilties
 	use("tpope/vim-commentary")

@@ -4,13 +4,13 @@ vim.g["ale_fixers"] = {
 	go = { "gofmt" },
 	html = { "prettier" },
 	javascript = { "eslint", "prettier" },
-	-- json = { "fixjson", "eslint" },
 	lua = { "stylua" },
 	python = { "autoflake", "isort", "black" },
 	ruby = { "rufo" },
 	rust = { "rustfmt" },
 	typescript = { "eslint", "prettier" },
 	yaml = { "prettier" },
+	json = { "fixjson" },
 }
 
 vim.g["ale_rust_rustfmt_options"] = "--edition 2021"

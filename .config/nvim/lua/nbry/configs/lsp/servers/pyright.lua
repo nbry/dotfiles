@@ -1,9 +1,9 @@
 return {
-	settings = {
-		python = {
-			analysis = {
-				typeCheckingMode = "strict",
-			},
-		},
-	},
+	-- settings = {
+	-- 	python = {
+	-- 		analysis = {
+	-- 			typeCheckingMode = "strict",
+	-- 		},
+	-- 	},
+	-- },
 }
