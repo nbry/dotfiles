@@ -1,21 +1,42 @@
 #!/bin/bash
 
+# pactl-wrapper
+
+# This script wraps the pactl volume setting feature,
+# and prevents the volume level from shooting past a max allowed volume.
+
 ACTION=$1
 INTERVAL=$2
 
-SINK="Master"
-MAX_ALLOWED_VOLUME=120
+DEFAULT_SINK=1
+DEFAULT_MAX_LEVEL=110
 
-function get_sink_volume {
-	pactl list sinks | grep '^[[:space:]]Volume:' | \
-    head -n $(( $SINK + 1 )) | tail -n 1 | sed -e 's,.* \([0-9][0-9]*\)%.*,\1,'
+# Setting MAX_ALLOWED_VOLUME for i3wm will differ by distro
+MAX_LEVEL=${MAX_ALLOWED_VOLUME:-$DEFAULT_MAX_LEVEL}
+
+function get_default_sink_volume {
+	pactl list sinks\
+		| grep '^[[:space:]]Volume:'\
+		| head -n $DEFAULT_SINK\
+		| tail -n 1\
+		| sed -e 's,.* \([0-9][0-9]*\)%.*,\1,'
 }
 
 case $ACTION in
 	UP)
-		if [ $(get_sink_volume) -lt $MAX_ALLOWED_VOLUME ]
+		CURRENT_VOLUME=$(get_default_sink_volume)
+
+		if [ $CURRENT_VOLUME -lt $MAX_LEVEL ]
 		then
-			pactl set-sink-volume @DEFAULT_SINK@ +$INTERVAL%
+			if [ $(($CURRENT_VOLUME + $INTERVAL)) -gt $MAX_LEVEL ]
+			then
+				# i.e. if current volume + requested interval increase is
+				# above allowed max, set the volume to the max.
+				pactl set-sink-volume @DEFAULT_SINK@ $MAX_LEVEL%
+
+			else
+				pactl set-sink-volume @DEFAULT_SINK@ +$INTERVAL%
+			fi
 		fi
 		;;
 
@@ -23,8 +44,7 @@ case $ACTION in
 		pactl set-sink-volume @DEFAULT_SINK@ -$INTERVAL%
 		;;
 
-	MUTE)
+	TOGGLE_MUTE)
 		pactl set-sink-mute @DEFAULT_SINK@ toggle
 		;;
-
 esac
