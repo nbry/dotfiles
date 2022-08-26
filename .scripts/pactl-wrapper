@@ -8,31 +8,27 @@
 ACTION=$1
 INTERVAL=$2
 
-DEFAULT_SINK=1
 DEFAULT_MAX_LEVEL=110
+MAX_ALLOWED_LEVEL=${MAX_ALLOWED_VOLUME:-$DEFAULT_MAX_LEVEL}
 
-# Setting MAX_ALLOWED_VOLUME for i3wm will differ by distro
-MAX_LEVEL=${MAX_ALLOWED_VOLUME:-$DEFAULT_MAX_LEVEL}
-
-function get_default_sink_volume {
+function get_running_sink_volume {
 	pactl list sinks\
-		| grep '^[[:space:]]Volume:'\
-		| head -n $DEFAULT_SINK\
+		| grep -A 8 'State: RUNNING'\
 		| tail -n 1\
 		| sed -e 's,.* \([0-9][0-9]*\)%.*,\1,'
 }
 
 case $ACTION in
 	UP)
-		CURRENT_VOLUME=$(get_default_sink_volume)
+		CURRENT_VOLUME=$(get_running_sink_volume)
 
-		if [ $CURRENT_VOLUME -lt $MAX_LEVEL ]
+		if [ $CURRENT_VOLUME -lt $MAX_ALLOWED_LEVEL ]
 		then
-			if [ $(($CURRENT_VOLUME + $INTERVAL)) -gt $MAX_LEVEL ]
+			if [ $(($CURRENT_VOLUME + $INTERVAL)) -gt $MAX_ALLOWED_LEVEL ]
 			then
 				# i.e. if current volume + requested interval increase is
 				# above allowed max, set the volume to the max.
-				pactl set-sink-volume @DEFAULT_SINK@ $MAX_LEVEL%
+				pactl set-sink-volume @DEFAULT_SINK@ $MAX_ALLOWED_LEVEL%
 
 			else
 				pactl set-sink-volume @DEFAULT_SINK@ +$INTERVAL%
