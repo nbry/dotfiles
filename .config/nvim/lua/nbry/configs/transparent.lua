@@ -41,20 +41,3 @@ au VimEnter * highlight GitSignsChange          guibg=none guifg='#bb86d1'
 "yellow
 au VimEnter * highlight DiagnosticFloatingWarn  guibg=none guifg='#f9ab00'
 ]])
-
--- "LspDiagnosticsFloatingError",
--- "LspDiagnosticsFloatingHint",
--- "LspDiagnosticsFloatingInformation",
--- "LspDiagnosticsFloatingWarning ",
--- "LspDiagnosticsSignError",
--- "LspDiagnosticsSignHint",
--- "LspDiagnosticsSignInformation",
--- "LspDiagnosticsSignWarning",
--- "LspReferenceRead",
--- "LspReferenceText",
--- "LspReferenceWrite",
--- "NvimTreeLspDiagnosticsError",
--- "NvimTreeLspDiagnosticsHint",
--- "NvimTreeLspDiagnosticsInformation",
--- "NvimTreeLspDiagnosticsWarning",
--- "NvimTreeSignColumn",

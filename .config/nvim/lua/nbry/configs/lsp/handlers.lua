@@ -8,6 +8,17 @@ M.setup = function()
 		{ name = "DiagnosticSignInfo", text = "" },
 	}
 
+	local border = {
+		{ "🭽", "FloatBorder" },
+		{ "▔", "FloatBorder" },
+		{ "🭾", "FloatBorder" },
+		{ "▕", "FloatBorder" },
+		{ "🭿", "FloatBorder" },
+		{ "▁", "FloatBorder" },
+		{ "🭼", "FloatBorder" },
+		{ "▏", "FloatBorder" },
+	}
+
 	for _, sign in ipairs(signs) do
 		vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
 	end
@@ -23,7 +34,7 @@ M.setup = function()
 		float = {
 			focusable = false,
 			style = "minimal",
-			border = "double",
+			border = border,
 			source = "always",
 			header = "",
 			prefix = "",

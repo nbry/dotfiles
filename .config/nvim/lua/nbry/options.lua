@@ -2,12 +2,12 @@
 
 -- stylua: ignore
 local myOptions = {
-  -- visual
-  cursorline = true,                       -- highlight the current line
+  autoindent = true,
   clipboard = "unnamedplus",               -- allows neovim to access the system clipboard
   cmdheight = 1,                           -- more space in the neovim command line for displaying messages
   completeopt = { "menuone", "noselect" }, -- mostly just for cmp
   conceallevel = 0,                        -- so that `` is visible in markdown files
+  cursorline = true,                       -- highlight the current line
   expandtab = false,                        -- convert tabs to spaces
   fileencoding = "utf-8",                  -- the encoding written to a file
   hlsearch = true,                         -- highlight all matches on previous search pattern
@@ -18,17 +18,16 @@ local myOptions = {
   pumheight = 10,                          -- pop up menu height
   -- relativenumber = true,                   -- set relative numbered lines
   scrolloff = 8,
+  shiftwidth = 4,                          -- the number of spaces inserted for each indentation
   showmode = false,                        -- we don't need to see things like -- INSERT -- anymore
   -- showtabline = 2,                         -- always show tabline at top
   sidescrolloff = 8,
   signcolumn = "yes",                      -- always show the sign column, otherwise it would shift the text each time
   smartcase = true,                        -- smart case
   -- smartindent = true,
-  autoindent = true,
   splitbelow = true,                       -- force all horizontal splits to go below current window
   splitright = true,                       -- force all vertical splits to go to the right of current window
   swapfile = false,                        -- creates a swapfile
-  shiftwidth = 4,                          -- the number of spaces inserted for each indentation
   tabstop = 4,                             -- number of spaces to insert for a tab
   termguicolors = true,                    -- set term gui colors (most terminals support this)
   timeoutlen = 1000,                       -- time to wait for a mapped sequence to complete (in milliseconds)

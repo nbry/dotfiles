@@ -17,7 +17,6 @@ packer.init({
 -- Plugins --
 -------------
 return packer.startup(function(use)
-	-- Theme
 	use({
 		"sainnhe/gruvbox-material",
 		-- "luisiacc/gruvbox-baby",
@@ -27,7 +26,6 @@ return packer.startup(function(use)
 		end,
 	})
 
-	-- Lualine: Better status line
 	use({
 		"nvim-lualine/lualine.nvim",
 		requires = { "kyazdani42/nvim-web-devicons", opt = true },
@@ -36,7 +34,6 @@ return packer.startup(function(use)
 		end,
 	})
 
-	-- Git Symbols and Blamer
 	use({
 		"lewis6991/gitsigns.nvim",
 		config = function()
@@ -44,7 +41,6 @@ return packer.startup(function(use)
 		end,
 	})
 
-	-- NvimTree
 	use({
 		"kyazdani42/nvim-tree.lua",
 		requires = {
@@ -55,7 +51,6 @@ return packer.startup(function(use)
 		end,
 	})
 
-	-- Scrollbar
 	use({
 		"petertriho/nvim-scrollbar",
 		config = function()
@@ -63,24 +58,6 @@ return packer.startup(function(use)
 		end,
 	})
 
-	-- Markdown Preview: Live preview of mardown files in browser
-	use({
-		"iamcco/markdown-preview.nvim",
-		run = function()
-			vim.fn["mkdp#util#install"]()
-		end,
-		ft = { "markdown" },
-	})
-
-	-- Transparency Everywhere
-	use({
-		"xiyaowong/nvim-transparent",
-		config = function()
-			require("nbry.configs.transparent")
-		end,
-	})
-
-	-- Treesitter
 	use({
 		"nvim-treesitter/nvim-treesitter",
 		run = ":TSUpdate",
@@ -89,7 +66,21 @@ return packer.startup(function(use)
 		end,
 	})
 
-	-- Language Server Protocol
+	use({
+		"iamcco/markdown-preview.nvim",
+		run = function()
+			vim.fn["mkdp#util#install"]()
+		end,
+		ft = { "markdown" },
+	})
+
+	use({
+		"xiyaowong/nvim-transparent",
+		config = function()
+			require("nbry.configs.transparent")
+		end,
+	})
+
 	use({
 		"neovim/nvim-lspconfig",
 		config = function()
@@ -97,7 +88,6 @@ return packer.startup(function(use)
 		end,
 	})
 
-	-- Language Server Installation Tool
 	use({
 		"williamboman/nvim-lsp-installer",
 		config = function()
@@ -105,7 +95,6 @@ return packer.startup(function(use)
 		end,
 	})
 
-	-- CMP
 	use({
 		"hrsh7th/nvim-cmp",
 		config = function()
@@ -119,14 +108,6 @@ return packer.startup(function(use)
 	use("hrsh7th/cmp-nvim-lsp")
 	use("hrsh7th/cmp-nvim-lua")
 	use("hrsh7th/cmp-path")
-
-	-- Extra Rust Tools (e.g. Inlay Hints)
-	use({
-		"simrat39/rust-tools.nvim",
-		config = function()
-			require("nbry.configs.rust-tools")
-		end,
-	})
 
 	-- Snippets
 	use("L3MON4D3/LuaSnip") -- engine
@@ -162,14 +143,6 @@ return packer.startup(function(use)
 			require("nbry.configs.ale")
 		end,
 	})
-
-	-- Pears: Bracket/Pair completion tool
-	-- use({
-	-- 	"steelsojka/pears.nvim",
-	-- 	config = function()
-	-- 		require("nbry.configs.pears")
-	-- 	end,
-	-- })
 
 	-- Vanilla Vim Utilties
 	use("tpope/vim-commentary")

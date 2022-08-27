@@ -12,10 +12,13 @@ configs.setup({
 	},
 	highlight = {
 		enable = true, -- false will disable the whole extension
-		disable = { "javascript" }, -- list of language that will be disabled
+		disable = { "javascript" },
 		additional_vim_regex_highlighting = true,
 	},
-	indent = { enable = true, disable = { "yaml", "python" } },
+	indent = {
+		enable = true,
+		disable = { "yaml", "python" },
+	},
 	context_commentstring = {
 		enable = true,
 		enable_autocmd = false,
