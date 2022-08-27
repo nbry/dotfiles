@@ -98,7 +98,12 @@ return packer.startup(function(use)
 	})
 
 	-- Language Server Installation Tool
-	use("williamboman/nvim-lsp-installer")
+	use({
+		"williamboman/nvim-lsp-installer",
+		config = function()
+			require("nbry.configs.nvim-lsp-installer")
+		end,
+	})
 
 	-- CMP
 	use({

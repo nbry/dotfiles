@@ -1,17 +1,25 @@
-local status_ok, _ = pcall(require, "lspconfig")
+require("nbry.configs.lsp.handlers").setup()
+
+local status_ok, lspconfig = pcall(require, "lspconfig")
 if not status_ok then
 	return
 end
 
--- add a border around LspInfo
-local win = require("lspconfig.ui.windows")
-local _default_opts = win.default_opts
+-- Base LSP handlers/options, to attach to each server
+local lsp_opts = {
+	on_attach = require("nbry.configs.lsp.handlers").on_attach,
+	capabilities = require("nbry.configs.lsp.handlers").capabilities,
+}
 
-win.default_opts = function(options)
-	local opts = _default_opts(options)
-	opts.border = "double"
-	return opts
+local servers = {
+	"sumneko_lua",
+	"pyright",
+	"jsonls",
+}
+
+-- Attach a combined/flattened server AND base config to the server
+for _, server in ipairs(servers) do
+	local server_opts = require("nbry.configs.lsp.servers." .. server)
+	local opts = vim.tbl_deep_extend("force", server_opts, lsp_opts)
+	lspconfig[server].setup(opts)
 end
-
-require("nbry.configs.lsp.lsp-installer")
-require("nbry.configs.lsp.handlers").setup()

@@ -13,8 +13,8 @@ exec --no-startup-id xinput set-prop "PIXA3854:00 093A:0274 Touchpad" "libinput 
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec_always --no-startup-id betterlockscreen -w
 exec_always --no-startup-id picom --config ~/.config/picom/picom.conf --experimental-backends
-exec_always --no-startup-id xrandr --dpi 109
-exec_always --no-startup-id ~/.startup.sh
+# exec_always --no-startup-id xrandr --dpi 109
+exec_always --no-startup-id ~/startup
 # exec_always --no-startup-id polybar
 
 # toggle alacritty opacity
