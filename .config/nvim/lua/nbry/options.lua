@@ -1,7 +1,7 @@
 -- :help options
 
 -- stylua: ignore
-local myOptions = {
+local options = {
   autoindent = true,
   clipboard = "unnamedplus",               -- allows neovim to access the system clipboard
   cmdheight = 1,                           -- more space in the neovim command line for displaying messages
@@ -38,8 +38,8 @@ local myOptions = {
 }
 
 -- Set all options
-for k, v in pairs(myOptions) do
-	vim.opt[k] = v
+for option, setting in pairs(options) do
+	vim.opt[option] = setting
 end
 
 -- Vimscript

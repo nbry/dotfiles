@@ -3,6 +3,22 @@ if not status_ok then
 	return
 end
 
+-- Configure a language server with individual server
+-- and the base configs
+local function configuration(server)
+	local server_config = {}
+
+	local exists, file = pcall(require, "nbry.configs.lsp.servers." .. server)
+	if exists then
+		server_config = file
+	end
+
+	return vim.tbl_deep_extend("force", {
+		on_attach = require("nbry.configs.lsp.handlers").on_attach,
+		capabilities = require("nbry.configs.lsp.handlers").capabilities,
+	}, server_config)
+end
+
 local servers = {
 	"gopls",
 	"jsonls",
@@ -13,18 +29,7 @@ local servers = {
 }
 
 for _, server in ipairs(servers) do
-	local config = {}
-
-	local exists, file = pcall(require, "nbry.configs.lsp.servers." .. server)
-
-	if exists then
-		config = file
-	end
-
-	config.on_attach = require("nbry.configs.lsp.handlers").on_attach
-	config.capabilities = require("nbry.configs.lsp.handlers").capabilities
-
-	lspconfig[server].setup(config)
+	lspconfig[server].setup(configuration(server))
 end
 
 require("nbry.configs.lsp.handlers").setup()
