@@ -1,0 +1,17 @@
+#!/bin/bash
+#requires ag
+
+if ! command -v ag >/dev/null 2>&1 ; then
+    echo "ag not found"
+fi
+
+TO_FIND=$1
+TO_REPLACE_WITH=$2
+CASE_INSENSITIVE=$3
+
+
+if [ "$CASE_INSENSITIVE" = "i" ]; then
+	ag -i -l $TO_FIND | xargs sed -i "s/$TO_FIND/$TO_REPLACE_WITH/Ig"
+else
+	ag -l $TO_FIND | xargs sed -i "s/$TO_FIND/$TO_REPLACE_WITH/g"
+fi
