@@ -3,8 +3,8 @@ if not status_ok then
 	return
 end
 
--- Configure a language server with individual server
--- and the base configs
+-- Configure a language server with individual server configs
+-- merged with the general capabilities and attachment behavior
 local function configuration(server)
 	local server_config = {}
 
@@ -20,6 +20,7 @@ local function configuration(server)
 end
 
 local servers = {
+	"dockerls",
 	"gopls",
 	"jsonls",
 	"pyright",

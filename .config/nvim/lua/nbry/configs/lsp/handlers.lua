@@ -9,17 +9,21 @@ handlers.setup = function()
 	}
 
 	for _, sign in ipairs(signs) do
-		vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
+		vim.fn.sign_define(sign.name, {
+			texthl = sign.name,
+			text = sign.text,
+			numhl = "",
+		})
 	end
 
-	local config = {
+	vim.diagnostic.config({
 		virtual_text = true,
-		signs = {
-			active = signs,
-		},
 		update_in_insert = true,
 		underline = true,
 		severity_sort = true,
+		signs = {
+			active = signs,
+		},
 		float = {
 			focusable = false,
 			style = "minimal",
@@ -28,22 +32,15 @@ handlers.setup = function()
 			header = "",
 			prefix = "",
 		},
-	}
-
-	vim.diagnostic.config(config)
-
-	vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-		border = "double",
 	})
 
-	vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+	vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
 		border = "double",
 	})
 end
 
 local function lsp_keymaps(bufnr)
 	local opts = { noremap = true, silent = true }
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>qf", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
@@ -57,6 +54,12 @@ end
 
 handlers.on_attach = function(_, bufnr) -- client, bufnr
 	lsp_keymaps(bufnr)
+	require("lsp_signature").on_attach({
+		bind = true, -- mandatory
+		handler_opts = {
+			border = "double",
+		},
+	}, bufnr)
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()

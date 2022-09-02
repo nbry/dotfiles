@@ -1,10 +1,9 @@
--- Use a protected call so we don't error out on first use
 local status_ok, packer = pcall(require, "packer")
 if not status_ok then
 	return
 end
 
--- Popup window for packer
+-- popup window for packer
 packer.init({
 	display = {
 		open_fn = function()
@@ -17,6 +16,7 @@ packer.init({
 -- Plugins --
 -------------
 return packer.startup(function(use)
+	-- theme
 	use({
 		"sainnhe/gruvbox-material",
 		-- "luisiacc/gruvbox-baby",
@@ -26,31 +26,34 @@ return packer.startup(function(use)
 		end,
 	})
 
+	-- transparent
+	use({
+		"xiyaowong/nvim-transparent",
+		config = function()
+			require("nbry.configs.transparent")
+		end,
+	})
+
+	-- icons for tree/lualine
+	use({ "kyazdani42/nvim-web-devicons" })
+
+	-- prettier line
 	use({
 		"nvim-lualine/lualine.nvim",
-		requires = { "kyazdani42/nvim-web-devicons", opt = true },
 		config = function()
 			require("nbry.configs.lualine")
 		end,
 	})
 
-	use({
-		"lewis6991/gitsigns.nvim",
-		config = function()
-			require("nbry.configs.gitsigns")
-		end,
-	})
-
+	-- files on left - netrw alternative
 	use({
 		"kyazdani42/nvim-tree.lua",
-		requires = {
-			"kyazdani42/nvim-web-devicons", -- optional, for file icon
-		},
 		config = function()
 			require("nbry.configs.nvim-tree")
 		end,
 	})
 
+	-- scrollbar on right
 	use({
 		"petertriho/nvim-scrollbar",
 		config = function()
@@ -58,6 +61,15 @@ return packer.startup(function(use)
 		end,
 	})
 
+	-- git symbols next to numbers
+	use({
+		"lewis6991/gitsigns.nvim",
+		config = function()
+			require("nbry.configs.gitsigns")
+		end,
+	})
+
+	-- tree fun
 	use({
 		"nvim-treesitter/nvim-treesitter",
 		run = ":TSUpdate",
@@ -66,6 +78,7 @@ return packer.startup(function(use)
 		end,
 	})
 
+	-- opens browser for live preview for .md editting
 	use({
 		"iamcco/markdown-preview.nvim",
 		run = function()
@@ -74,13 +87,7 @@ return packer.startup(function(use)
 		ft = { "markdown" },
 	})
 
-	use({
-		"xiyaowong/nvim-transparent",
-		config = function()
-			require("nbry.configs.transparent")
-		end,
-	})
-
+	-- lsp
 	use({
 		"neovim/nvim-lspconfig",
 		config = function()
@@ -88,13 +95,12 @@ return packer.startup(function(use)
 		end,
 	})
 
+	-- show signature of function while typing
 	use({
-		"williamboman/nvim-lsp-installer",
-		config = function()
-			require("nbry.configs.nvim-lsp-installer")
-		end,
+		"ray-x/lsp_signature.nvim",
 	})
 
+	-- completion
 	use({
 		"hrsh7th/nvim-cmp",
 		config = function()
@@ -102,24 +108,32 @@ return packer.startup(function(use)
 		end,
 	})
 
-	-- LSP/CMP Extra
+	-- auto install lsp servers
+	use({
+		"williamboman/nvim-lsp-installer",
+		config = function()
+			require("nbry.configs.nvim-lsp-installer")
+		end,
+	})
+
+	-- lsp/cmp extra
 	use("hrsh7th/cmp-buffer")
 	use("hrsh7th/cmp-cmdline")
 	use("hrsh7th/cmp-nvim-lsp")
 	use("hrsh7th/cmp-nvim-lua")
 	use("hrsh7th/cmp-path")
 
-	-- Snippets
+	-- snippets
 	use("L3MON4D3/LuaSnip") -- engine
 	use("rafamadriz/friendly-snippets")
 	use("saadparwaiz1/cmp_luasnip")
 
-	-- Better Syntax Highlighting
+	-- better syntax highlighting
 	use("mboughaba/i3config.vim")
 	use("vim-python/python-syntax")
 	use("pangloss/vim-javascript")
 
-	-- Telescope
+	-- telescope
 	use({
 		"nvim-telescope/telescope.nvim",
 		requires = { { "nvim-lua/plenary.nvim" } },
@@ -128,7 +142,7 @@ return packer.startup(function(use)
 		end,
 	})
 
-	-- Telescope Plugins
+	-- telescope plugins
 	use("nvim-telescope/telescope-media-files.nvim")
 	use("BurntSushi/ripgrep")
 	use({
@@ -136,7 +150,7 @@ return packer.startup(function(use)
 		run = "make",
 	})
 
-	-- Ale: ...only using for lint/format on save
+	-- ale: ...only using for lint/format on save
 	use({
 		"w0rp/ale",
 		config = function()
@@ -144,12 +158,12 @@ return packer.startup(function(use)
 		end,
 	})
 
-	-- Vanilla Vim Utilties
+	-- vanilla vim utilties
 	use("tpope/vim-commentary")
 	use("tpope/vim-surround")
 
-	-- Neovim Lua
-	use("nvim-lua/plenary.nvim") -- Useful lua functions used ny lots of plugins
+	-- neovim lua
+	use("nvim-lua/plenary.nvim") -- Useful lua functions used for lots of plugins
 	use("nvim-lua/popup.nvim") -- An implementation of the Popup API from vim in Neovim
 	use("wbthomason/packer.nvim") -- Have packer manage itself
 

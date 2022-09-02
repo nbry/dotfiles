@@ -36,12 +36,15 @@ keymap("n", "<leader>q1", ":quitall!<CR>", opts)
 keymap("n", "<leader>qq", ":q<CR>", opts)
 keymap("n", "<leader>w", ":w<CR>", opts)
 
--- replace all
-keymap("n", "<C-s>", ":%s/", opts)
-keymap("v", "<C-s>", ":s/", opts)
+-- find and replace
+keymap("n", "<C-s>", ":%s/", opts) -- buffer
+keymap("v", "<C-s>", ":s/", opts) -- visual
+
+-- find and replace - current directory (custom script)
+keymap("n", "<leader>fr", ":! fnr ", opts)
 
 -- source vimrc
-keymap("n", "<leader>sv", ":source $MYVIMRC<CR>", opts)
+keymap("n", "<leader>sv", "<cmd>luafile $MYVIMRC<CR>", opts)
 
 -- stay in indent mode
 keymap("v", "<", "<gv", opts)
@@ -50,12 +53,6 @@ keymap("v", ">", ">gv", opts)
 -- move text up and down
 keymap("v", "<A-j>", ":m .+1<CR>==", opts)
 keymap("v", "<A-k>", ":m .-2<CR>==", opts)
-
--- move text up and down
-keymap("x", "J", ":move '>+1<CR>gv-gv", opts)
-keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
-keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
-keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 
 -- better terminal navigation
 keymap("t", "<C-h>", "<C-\\><C-N><C-w>h", term_opts)
@@ -80,6 +77,6 @@ keymap("v", "p", '"_dP', opts)
 
 -- base64
 vim.cmd([[
-  vnoremap <leader>d c<c-r>=system('base64 --decode \| jq .', @")<cr><esc>
-  vnoremap <leader>e c<c-r>=system('jq --compact-output . \| base64 --wrap 0', @")<cr><esc>
+	vnoremap <leader>d c<c-r>=system('base64 --decode \| jq .', @")<cr><esc>
+	vnoremap <leader>e c<c-r>=system('jq --compact-output . \| base64 --wrap 0', @")<cr><esc>
 ]])
