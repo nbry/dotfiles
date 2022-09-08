@@ -75,6 +75,9 @@ keymap("n", "<leader>P", '"+P', opts)
 -- in visual, replace highlighted with yanked/clipboard item
 keymap("v", "p", '"_dP', opts)
 
+-- terminal, escape
+keymap("t", "<leader><Esc>", "<C-\\><c-n>", opts)
+
 -- base64
 vim.cmd([[
 	vnoremap <leader>d c<c-r>=system('base64 --decode \| jq .', @")<cr><esc>

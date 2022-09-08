@@ -21,8 +21,8 @@ general {
 order += "volume master"
 order += "memory"
 order += "battery all"
-order += "tztime utc"
 order += "tztime local"
+order += "tztime utc"
 order += "tztime date"
 
 wireless _first_ {
@@ -59,12 +59,12 @@ battery all {
 }
 
 tztime utc {
-  format = "🌏 %H:%M"
+  format = "🌏 UTC: %H:%M"
   timezone = "Etc/UTC"
 }
 
 tztime local {
-  format = "⏰ %H:%M"
+  format = "⏰ LOC: %H:%M"
 }
 
 tztime date {
