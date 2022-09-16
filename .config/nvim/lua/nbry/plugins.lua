@@ -18,9 +18,12 @@ packer.init({
 return packer.startup(function(use)
 	-- theme
 	use({
-		"sainnhe/gruvbox-material",
-		-- "luisiacc/gruvbox-baby",
+		-- "sainnhe/gruvbox-material",
+		"luisiacc/gruvbox-baby",
+		-- "ellisonleao/gruvbox.nvim",
 		-- "folke/tokyonight.nvim",
+		-- "catppuccin/nvim",
+		-- as = "catpuccin",
 		config = function()
 			require("nbry.configs.colorscheme")
 		end,
@@ -127,11 +130,6 @@ return packer.startup(function(use)
 	use("L3MON4D3/LuaSnip") -- engine
 	use("rafamadriz/friendly-snippets")
 	use("saadparwaiz1/cmp_luasnip")
-
-	-- better syntax highlighting
-	use("mboughaba/i3config.vim")
-	use("vim-python/python-syntax")
-	use("pangloss/vim-javascript")
 
 	-- telescope
 	use({

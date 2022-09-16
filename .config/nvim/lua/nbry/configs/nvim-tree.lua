@@ -1,9 +1,6 @@
 local keymap = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 
--- following options are the default
--- each of these are documented in `:help nvim-tree.OPTION_NAME`
-
 local status_ok, nvim_tree = pcall(require, "nvim-tree")
 if not status_ok then
 	return
@@ -20,14 +17,15 @@ nvim_tree.setup({
 	disable_netrw = true,
 	hijack_netrw = true,
 	open_on_setup = true,
+	open_on_setup_file = false,
+	open_on_tab = false,
 	ignore_ft_on_setup = {
 		"startify",
 		"dashboard",
 		"alpha",
 	},
-	open_on_tab = false,
 	hijack_cursor = false,
-	update_cwd = true,
+	update_cwd = false,
 	-- update_to_buf_dir = {
 	--   enable = true,
 	--   auto_open = true,
@@ -48,7 +46,7 @@ nvim_tree.setup({
 	},
 	update_focused_file = {
 		enable = true,
-		update_cwd = true,
+		update_cwd = false,
 		ignore_list = {},
 	},
 	system_open = {
@@ -65,7 +63,7 @@ nvim_tree.setup({
 		timeout = 500,
 	},
 	view = {
-		width = 40,
+		width = 50,
 		height = 30,
 		hide_root_folder = false,
 		side = "left",
@@ -77,8 +75,8 @@ nvim_tree.setup({
 				{ key = "v", cb = tree_cb("vsplit") },
 			},
 		},
-		number = false,
-		relativenumber = false,
+		number = true,
+		relativenumber = true,
 	},
 	trash = {
 		cmd = "trash",
@@ -112,7 +110,9 @@ nvim_tree.setup({
 	},
 })
 
+require("nvim-tree.view").View.winopts.signcolumn = "no"
+
 -- keymap
 keymap("n", "<leader>c", ":NvimTreeCollapse<CR>", opts)
 keymap("n", "<C-n>", ":NvimTreeFocus<CR>", opts)
-keymap("n", "<C-t>", ":NvimTreeToggle<CR>", opts)
+keymap("n", "<C-t>", ":lua require('nvim-tree').toggle(false, true)<CR>", opts)

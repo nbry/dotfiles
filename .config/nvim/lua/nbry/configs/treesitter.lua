@@ -12,7 +12,7 @@ configs.setup({
 	},
 	highlight = {
 		enable = true, -- false will disable the whole extension
-		disable = { "javascript" },
+		-- disable = { "javascript" },
 		additional_vim_regex_highlighting = true,
 	},
 	indent = {

@@ -22,7 +22,6 @@ alias configneovim="nvim ~/.config/nvim/lua/nbry/"
 alias configpicom="nvim ~/.config/picom/picom.conf"
 alias configterminal="nvim ~/.config/alacritty/alacritty.yml"
 alias configzshrc="nvim ~/.zshrc"
-alias python="python3"
 
 
 ## git

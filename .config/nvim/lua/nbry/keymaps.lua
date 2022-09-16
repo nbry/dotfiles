@@ -73,10 +73,14 @@ keymap("n", "<leader>p", '"+p', opts)
 keymap("n", "<leader>P", '"+P', opts)
 
 -- in visual, replace highlighted with yanked/clipboard item
+keymap("x", "<leader>p", '"_dP', opts)
 keymap("v", "p", '"_dP', opts)
 
 -- terminal, escape
 keymap("t", "<leader><Esc>", "<C-\\><c-n>", opts)
+
+-- spell check toggle
+keymap("n", "<F10>", ":set spell!<CR>", opts)
 
 -- base64
 vim.cmd([[
