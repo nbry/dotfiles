@@ -10,6 +10,7 @@ vim.g["ale_fixers"] = {
 	ruby = { "rufo" },
 	rust = { "rustfmt" },
 	typescript = { "eslint", "prettier" },
+	typescriptreact = { "eslint", "prettier" },
 	yaml = { "prettier" },
 }
 

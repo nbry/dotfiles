@@ -9,6 +9,7 @@ local colorscheme = "gruvbox-baby"
 
 -- gruvbox-baby
 vim.g.gruvbox_baby_transparent_mode = 1
+vim.g.gruvbox_baby_function_style = "NONE"
 
 -- load colorscheme
 local status_ok, c = pcall(vim.cmd, "colorscheme " .. colorscheme)

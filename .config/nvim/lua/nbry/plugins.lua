@@ -18,12 +18,36 @@ packer.init({
 return packer.startup(function(use)
 	-- theme
 	use({
-		-- "sainnhe/gruvbox-material",
 		"luisiacc/gruvbox-baby",
-		-- "ellisonleao/gruvbox.nvim",
-		-- "folke/tokyonight.nvim",
-		-- "catppuccin/nvim",
-		-- as = "catpuccin",
+		config = function()
+			require("nbry.configs.colorscheme")
+		end,
+	})
+
+	use({
+		"sainnhe/gruvbox-material",
+		config = function()
+			require("nbry.configs.colorscheme")
+		end,
+	})
+
+	use({
+		"ellisonleao/gruvbox.nvim",
+		config = function()
+			require("nbry.configs.colorscheme")
+		end,
+	})
+
+	use({
+		"folke/tokyonight.nvim",
+		config = function()
+			require("nbry.configs.colorscheme")
+		end,
+	})
+
+	use({
+		"catppuccin/nvim",
+		as = "catpuccin",
 		config = function()
 			require("nbry.configs.colorscheme")
 		end,
