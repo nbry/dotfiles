@@ -12,6 +12,7 @@ vim.g["ale_fixers"] = {
 	typescript = { "eslint", "prettier" },
 	typescriptreact = { "eslint", "prettier" },
 	yaml = { "prettier" },
+	-- sql = { "pgformatter" },
 }
 
 vim.g["ale_rust_rustfmt_options"] = "--edition 2021"

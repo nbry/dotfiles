@@ -82,6 +82,12 @@ keymap("t", "<leader><Esc>", "<C-\\><c-n>", opts)
 -- spell check toggle
 keymap("n", "<F10>", ":set spell!<CR>", opts)
 
+-- visual multi-line refactor
+keymap("v", "<leader>ok", ":s/\\(\\w.*\\)/", opts)
+
+-- ALE
+keymap("n", "<leader>f", ":ALEFix<CR>", opts)
+
 -- base64
 vim.cmd([[
 	vnoremap <leader>d c<c-r>=system('base64 --decode \| jq .', @")<cr><esc>
