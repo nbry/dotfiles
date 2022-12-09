@@ -20,6 +20,7 @@ local function configuration(server)
 end
 
 local servers = {
+	"astro",
 	"dockerls",
 	"gopls",
 	"jsonls",

@@ -24,35 +24,6 @@ return packer.startup(function(use)
 		end,
 	})
 
-	use({
-		"sainnhe/gruvbox-material",
-		config = function()
-			require("nbry.configs.colorscheme")
-		end,
-	})
-
-	use({
-		"ellisonleao/gruvbox.nvim",
-		config = function()
-			require("nbry.configs.colorscheme")
-		end,
-	})
-
-	use({
-		"folke/tokyonight.nvim",
-		config = function()
-			require("nbry.configs.colorscheme")
-		end,
-	})
-
-	use({
-		"catppuccin/nvim",
-		as = "catpuccin",
-		config = function()
-			require("nbry.configs.colorscheme")
-		end,
-	})
-
 	-- transparent
 	use({
 		"xiyaowong/nvim-transparent",
@@ -143,6 +114,11 @@ return packer.startup(function(use)
 		end,
 	})
 
+	-- astro syntax highlighting
+	use({
+		"wuelnerdotexe/vim-astro",
+	})
+
 	-- lsp/cmp extra
 	use("hrsh7th/cmp-buffer")
 	use("hrsh7th/cmp-cmdline")
@@ -151,9 +127,9 @@ return packer.startup(function(use)
 	use("hrsh7th/cmp-path")
 
 	-- snippets
-	use("L3MON4D3/LuaSnip") -- engine
-	use("rafamadriz/friendly-snippets")
-	use("saadparwaiz1/cmp_luasnip")
+	use("dcampos/nvim-snippy")
+	use("dcampos/cmp-snippy")
+	use("honza/vim-snippets")
 
 	-- telescope
 	use({

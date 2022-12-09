@@ -1,4 +1,5 @@
 vim.g["ale_fixers"] = {
+	astro = { "prettier" },
 	c = { "clang-format" },
 	css = { "prettier" },
 	go = { "gofmt" },
