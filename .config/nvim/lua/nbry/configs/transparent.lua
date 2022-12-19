@@ -24,7 +24,9 @@ require("transparent").setup({
 	},
 })
 
+------
 -- 🥲
+------
 vim.cmd([[
 "red
 au VimEnter * highlight DiagnosticFloatingError guibg=none guifg='#d18686'

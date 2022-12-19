@@ -24,6 +24,13 @@ return packer.startup(function(use)
 		end,
 	})
 
+	use({
+		"EdenEast/nightfox.nvim",
+		config = function()
+			require("nbry.configs.colorscheme")
+		end,
+	})
+
 	-- transparent
 	use({
 		"xiyaowong/nvim-transparent",
@@ -153,6 +160,14 @@ return packer.startup(function(use)
 		"w0rp/ale",
 		config = function()
 			require("nbry.configs.ale")
+		end,
+	})
+
+	-- visual aid for pyth... indentations
+	use({
+		"lukas-reineke/indent-blankline.nvim",
+		config = function()
+			require("nbry.configs.indent-blankline")
 		end,
 	})
 

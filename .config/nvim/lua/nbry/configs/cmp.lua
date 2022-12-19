@@ -13,7 +13,9 @@ local check_backspace = function()
 	return col == 0 or vim.fn.getline("."):sub(col, col):match("%s")
 end
 
+------
 --   פּ ﯟ   some other good icons
+------
 local kind_icons = {
 	Text = "",
 	Method = "m",
@@ -66,10 +68,6 @@ cmp.setup({
 		["<Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_next_item()
-			elseif snippy.expandable() then
-				snippy.expand()
-			elseif snippy.expand_or_jumpable() then
-				snippy.expand_or_jump()
 			elseif check_backspace() then
 				fallback()
 			else
