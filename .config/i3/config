@@ -193,6 +193,7 @@ set $lilac #9c6ac6
 set $road-paint-yellow #f9ab00
 set $teal #0f644d
 set $teal-bright #17aa78
+set $terafox-burgundy #784c63
 
 # i3 bar/status
 bar {
@@ -212,7 +213,7 @@ popup_during_fullscreen smart
 # workspace_auto_back_and_forth yes
 
 # class                 border  backgr. text    indicator child_border
-client.focused          #50d189 #285577 #ffffff #50d189   $lilac
+client.focused          #50d189 #285577 #ffffff #50d189   $terafox-burgundy
 for_window [class=".*"] border pixel 1
 hide_edge_borders smart
 
