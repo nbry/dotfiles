@@ -35,3 +35,12 @@ alias glon="git log --oneline -n"
 alias gs="git status"
 alias gp="git push"
 alias gpso="git push --set-upstream origin"
+
+function mod_commit () {
+  git stash;
+  git rebase -i HEAD~"$1";
+  git stash pop;
+  git add .
+  git commit --amend --no-edit
+  git rebase --continue
+}

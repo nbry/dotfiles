@@ -26,8 +26,8 @@ local servers = {
 	"jsonls",
 	"pyright",
 	"rust_analyzer",
-	"sumneko_lua",
 	"tsserver",
+	-- "sumneko_lua",
 }
 
 for _, server in ipairs(servers) do

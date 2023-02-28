@@ -2,7 +2,7 @@
 require("lualine").setup({
 	options = {
 		icons_enabled = true,
-		theme = "terafox",
+		theme = "powerline",
 		component_separators = { left = "", right = "" },
 		section_separators = { left = "", right = "" },
 		disabled_filetypes = {},

@@ -1,7 +1,7 @@
 -- :help options
 
 local space_holywar = {
-	spaces = 4,
+	spaces = 2,
 	expand = true,
 }
 
