@@ -1,5 +1,6 @@
 # Custom Aliases
-alias dualscreen="zsh ~/.screenlayout/dual-lg.sh"
+alias dualscreen="zsh ~/.screenlayout/wide.sh"
+alias laptopandwide="zsh ~/.screenlayout/laptop-and-wide.sh"
 alias jssandbox="git clone git@github.com:nbry/js-sandbox.git"
 alias tssandbox="git clone git@github.com:nbry/ts-sandbox.git"
 alias lg="ll --group-directories-first"
@@ -11,7 +12,6 @@ alias tarxf="tar -xf"
 alias vim="nvim"
 alias xclip="xclip -selection c"
 alias zreset="source ~/.zshrc"
-
 
 ## config
 alias configaliases="nvim ~/.zsh_aliases"
@@ -43,4 +43,17 @@ function mod_commit () {
   git add .
   git commit --amend --no-edit
   git rebase --continue
+}
+
+function gsb {
+    provided_branch="$1"
+
+    # Step 2: Checkout the provided branch
+    git checkout "$provided_branch"
+
+    # Step 3: Pull the latest changes from the provided branch
+    git pull origin "$provided_branch"
+
+    # Step 4: Switch back to the original branch
+    git checkout -
 }

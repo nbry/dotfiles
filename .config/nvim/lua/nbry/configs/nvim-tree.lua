@@ -49,7 +49,7 @@ nvim_tree.setup({
 		hide_root_folder = false,
 		side = "left",
 		number = true,
-		relativenumber = true,
+		-- relativenumber = true,
 	},
 	trash = {
 		cmd = "trash",
@@ -116,4 +116,4 @@ vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
 ------------
 keymap("n", "<leader>c", ":NvimTreeCollapse<CR>", opts)
 keymap("n", "<C-n>", ":NvimTreeFocus<CR>", opts)
-keymap("n", "<C-t>", ":lua require('nvim-tree').toggle(false, true)<CR>", opts)
+keymap("n", "<C-t>", ":NvimTreeToggle<CR>", opts)

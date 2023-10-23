@@ -7,6 +7,10 @@ keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+-- clear empty lines
+keymap("n", "<leader>el", ":g/^$/d<CR><leader>l", opts)
+keymap("v", "<leader>el", ":g/^$/d<CR><leader>l", opts)
+
 -- better window navigation
 keymap("n", "<C-h>", "<C-w>h", opts)
 keymap("n", "<C-j>", "<C-w>j", opts)
@@ -86,7 +90,7 @@ keymap("n", "<F10>", ":set spell!<CR>", opts)
 keymap("v", "<leader>ok", ":s/\\(\\w.*\\)/", opts)
 
 -- ALE
-keymap("n", "<leader>f", ":ALEFix<CR>", opts)
+keymap("n", "<leader>aa", ":ALEFix<CR>", opts)
 
 -- base64
 vim.cmd([[

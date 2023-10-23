@@ -2,8 +2,8 @@
 set $mod Mod4
 set $refresh_i3status killall -SIGUSR1 i3status
 set $display1 HDMI-0
-set $display2 DP-2
-# set $display3 DP-4
+# set $display2 DP-2
+set $display3 DP-4
 set $browser $BROWSER
 
 font pango:MesloLGS NF 8
@@ -18,10 +18,11 @@ exec_always --no-startup-id ~/startup
 # exec_always --no-startup-id polybar
 
 # toggle alacritty opacity
-bindsym $mod+Shift+o exec --no-startup-id ~/.local/bin/toggle_opacity 0.85
+bindsym $mod+Shift+o exec --no-startup-id ~/.local/bin/toggle_opacity 0.97
 
 # toggle window monitor
-bindsym $mod+Shift+w exec --no-startup-id i3-monitor-toggle
+# bindsym $mod+Shift+w exec --no-startup-id i3-monitor-toggle
+bindsym $mod+Shift+w exec --no-startup-id zsh ~/.screenlayout/laptop-and-wide.sh
 
 # audio
 # bindsym XF86AudioRaiseVolume exec --no-startup-id pactl-wrapper UP 5 && $refresh_i3status
@@ -90,7 +91,8 @@ bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
+# bindsym $mod+Shift+space floating toggle
+bindsym $mod+Shift+space floating toggle; resize set 2000 1300; move position center
 
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
@@ -115,7 +117,7 @@ set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
-# set $ws11 "11"
+set $ws11 "11"
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
@@ -128,7 +130,7 @@ bindsym $mod+7 workspace number $ws7
 bindsym $mod+8 workspace number $ws8
 bindsym $mod+9 workspace number $ws9
 bindsym $mod+0 workspace number $ws10
-# bindsym $mod+P workspace number $ws11
+bindsym $mod+p workspace number $ws11
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number $ws1
@@ -141,7 +143,7 @@ bindsym $mod+Shift+7 move container to workspace number $ws7
 bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
-# bindsym $mod+Shift+P move container to workspace number $ws11
+bindsym $mod+Shift+p move container to workspace number $ws11
 
 # assign workspaces to a certain monitor
 workspace 1 output $display1
@@ -149,13 +151,13 @@ workspace 2 output $display1
 workspace 3 output $display1
 workspace 4 output $display1
 workspace 5 output $display1
+workspace 6 output $display1
+workspace 7 output $display1
+workspace 8 output $display1
+workspace 9 output $display1
+workspace 10 output $display1
 
-workspace 6 output $display2
-workspace 7 output $display2
-workspace 8 output $display2
-workspace 9 output $display2
-workspace 10 output $display2
-# workspace 11 output $display3
+workspace 11 output $display3
 
 # move entire workspaces to different monitors
 bindsym $mod+Ctrl+Shift+h move workspace to output left
@@ -229,11 +231,12 @@ floating_maximum_size -1 x -1
 set $mode_system LOCK(l), LOGOUT(g), SUSPEND(s), REBOOT(r), SHUTDOWN(CTRL+s)
 
 mode "$mode_system" {
-    bindsym l exec --no-startup-id betterlockscreen -l dim, mode "default"
+    # bindsym l exec --no-startup-id betterlockscreen -l dim, mode "default"
+    bindsym l exec --no-startup-id i3lock --color 000000, mode "default"
     bindsym g exec --no-startup-id i3-msg exit, mode "default"
     bindsym s exec --no-startup-id systemctl suspend, mode "default"
     bindsym r exec --no-startup-id systemctl reboot, mode "default"
-    bindsym Ctrl+s exec --no-startup-id systemctl poweroff -i, mode "default"
+    bindsym Ctrl+s exec --no-startup-id systemctl poweroff, mode "default"
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"

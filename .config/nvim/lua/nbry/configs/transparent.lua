@@ -1,13 +1,29 @@
 require("transparent").setup({
-	enable = true, -- boolean: enable transparent
 	extra_groups = {
 		"Float",
 		"FloatBorder",
+		"LspDiagnosticsFloatingError",
+		"LspDiagnosticsFloatingHint",
+		"LspDiagnosticsFloatingInformation",
+		"LspDiagnosticsFloatingWarning ",
+		"LspDiagnosticsSignError",
+		"LspDiagnosticsSignHint",
+		"LspDiagnosticsSignInformation",
+		"LspDiagnosticsSignWarning",
+		"LspReferenceRead",
+		"LspReferenceText",
+		"LspReferenceWrite",
 		"NormalFloat",
 		"NvimFloat",
+		"NvimTreeLspDiagnosticsError",
+		"NvimTreeLspDiagnosticsHint",
+		"NvimTreeLspDiagnosticsInformation",
+		"NvimTreeLspDiagnosticsWarning",
+		"NvimTreeSignColumn",
+		"Pmenu",
 		"SignColumn",
 	},
-	exclude = {
+	exclude_groups = {
 		"ScrollbarHandle",
 		"ScrollbarSearchHandle",
 		"ScrollbarSearch",

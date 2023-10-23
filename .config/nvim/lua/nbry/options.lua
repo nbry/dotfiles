@@ -21,7 +21,6 @@ local options = {
     number = true,
     numberwidth = 2,                         -- set number column width to 2 {default 4}
     pumheight = 10,                          -- pop up menu height
-    relativenumber = true,
     scrolloff = 8,
     shiftwidth = space_holywar.spaces,       -- the number of spaces inserted for each indentation
     showmode = false,                        -- we don't need to see things like -- INSERT -- anymore

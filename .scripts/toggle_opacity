@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+DEFAULT_OPACITY=0.95
+
 ## If alacritty.yml does not exist, raise an alert
 [[ ! -f ~/.config/alacritty/alacritty.yml ]] && \
     notify-send "alacritty.yml does not exist" && exit 0
@@ -11,7 +13,7 @@ opacity=$(awk '$1 == "opacity:" {print $2; exit}' \
 ## Assign toggle opacity value
 case $opacity in
   1)
-    toggle_opacity=$1
+    toggle_opacity="${1:-$DEFAULT_OPACITY}"
     ;;
   *)
     toggle_opacity=1

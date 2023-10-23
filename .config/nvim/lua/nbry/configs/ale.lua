@@ -17,4 +17,4 @@ vim.g["ale_fixers"] = {
 }
 
 vim.g["ale_rust_rustfmt_options"] = "--edition 2021"
-vim.g["ale_fix_on_save"] = 1
+-- vim.g["ale_fix_on_save"] = 1

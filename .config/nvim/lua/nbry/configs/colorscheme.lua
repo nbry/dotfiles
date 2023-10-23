@@ -1,5 +1,11 @@
 -- local colorscheme = "gruvbox-baby"
-local colorscheme = "terafox"
+local colorscheme = "gruvbox-material"
+-- local colorscheme = "terafox"
+
+---------------------
+-- gruvbox-material--
+---------------------
+vim.g.gruvbox_material_transparent_background = 2
 
 ------------------
 -- gruvbox-baby --
