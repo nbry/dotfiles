@@ -16,21 +16,6 @@ packer.init({
 -- Plugins --
 -------------
 return packer.startup(function(use)
-	-- theme
-	use({
-		"luisiacc/gruvbox-baby",
-		config = function()
-			require("nbry.configs.colorscheme")
-		end,
-	})
-
-	use({
-		"EdenEast/nightfox.nvim",
-		config = function()
-			require("nbry.configs.colorscheme")
-		end,
-	})
-
 	use({
 		"sainnhe/gruvbox-material",
 		config = function()
@@ -38,7 +23,6 @@ return packer.startup(function(use)
 		end,
 	})
 
-	-- transparent
 	use({
 		"xiyaowong/nvim-transparent",
 		config = function()
@@ -49,7 +33,6 @@ return packer.startup(function(use)
 	-- icons for tree/lualine
 	use({ "kyazdani42/nvim-web-devicons" })
 
-	-- prettier line
 	use({
 		"nvim-lualine/lualine.nvim",
 		config = function()
@@ -57,7 +40,6 @@ return packer.startup(function(use)
 		end,
 	})
 
-	-- files on left - netrw alternative
 	use({
 		"kyazdani42/nvim-tree.lua",
 		config = function()
@@ -65,7 +47,6 @@ return packer.startup(function(use)
 		end,
 	})
 
-	-- scrollbar on right
 	use({
 		"petertriho/nvim-scrollbar",
 		config = function()
@@ -73,7 +54,6 @@ return packer.startup(function(use)
 		end,
 	})
 
-	-- git symbols next to numbers
 	use({
 		"lewis6991/gitsigns.nvim",
 		config = function()
@@ -81,7 +61,6 @@ return packer.startup(function(use)
 		end,
 	})
 
-	-- tree fun
 	use({
 		"nvim-treesitter/nvim-treesitter",
 		run = ":TSUpdate",
@@ -128,11 +107,6 @@ return packer.startup(function(use)
 		end,
 	})
 
-	-- astro syntax highlighting
-	use({
-		"wuelnerdotexe/vim-astro",
-	})
-
 	-- lsp/cmp extra
 	use("hrsh7th/cmp-buffer")
 	use("hrsh7th/cmp-cmdline")
@@ -145,7 +119,6 @@ return packer.startup(function(use)
 	use("dcampos/cmp-snippy")
 	use("honza/vim-snippets")
 
-	-- telescope
 	use({
 		"nvim-telescope/telescope.nvim",
 		requires = { { "nvim-lua/plenary.nvim" } },

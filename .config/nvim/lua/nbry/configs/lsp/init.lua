@@ -27,7 +27,7 @@ local servers = {
 	"pyright",
 	"rust_analyzer",
 	"tsserver",
-	-- "sumneko_lua",
+	"sumneko_lua",
 }
 
 for _, server in ipairs(servers) do

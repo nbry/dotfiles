@@ -49,6 +49,7 @@ nvim_tree.setup({
 		hide_root_folder = false,
 		side = "left",
 		number = true,
+		preserve_window_proportions = false,
 		-- relativenumber = true,
 	},
 	trash = {
