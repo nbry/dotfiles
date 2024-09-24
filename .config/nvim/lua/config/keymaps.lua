@@ -3,9 +3,9 @@ local term_opts = { silent = true }
 local keymap = vim.api.nvim_set_keymap
 
 -- mapleader
-keymap("", "<Space>", "<Nop>", opts)
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
+-- keymap("", "<Space>", "<Nop>", opts)
+-- vim.g.mapleader = " "
+-- vim.g.maplocalleader = " "
 
 -- clear empty lines
 keymap("n", "<leader>el", ":g/^$/d<CR><leader>l", opts)

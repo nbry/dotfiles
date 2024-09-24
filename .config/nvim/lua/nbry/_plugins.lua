@@ -16,12 +16,12 @@ packer.init({
 -- Plugins --
 -------------
 return packer.startup(function(use)
-	use({
-		"sainnhe/gruvbox-material",
-		config = function()
-			require("nbry.configs.colorscheme")
-		end,
-	})
+	-- use({
+	-- 	"sainnhe/gruvbox-material",
+	-- 	config = function()
+	-- 		require("nbry.configs.colorscheme")
+	-- 	end,
+	-- })
 
 	use({
 		"xiyaowong/nvim-transparent",
@@ -33,12 +33,12 @@ return packer.startup(function(use)
 	-- icons for tree/lualine
 	use({ "kyazdani42/nvim-web-devicons" })
 
-	use({
-		"nvim-lualine/lualine.nvim",
-		config = function()
-			require("nbry.configs.lualine")
-		end,
-	})
+	-- use({
+	-- 	"nvim-lualine/lualine.nvim",
+	-- 	config = function()
+	-- 		require("nbry.configs.lualine")
+	-- 	end,
+	-- })
 
 	use({
 		"kyazdani42/nvim-tree.lua",
