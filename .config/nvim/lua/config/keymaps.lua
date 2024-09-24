@@ -3,9 +3,9 @@ local term_opts = { silent = true }
 local keymap = vim.api.nvim_set_keymap
 
 -- mapleader
-keymap("", "<Space>", "<Nop>", opts)
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
+-- keymap("", "<Space>", "<Nop>", opts)
+-- vim.g.mapleader = " "
+-- vim.g.maplocalleader = " "
 
 -- clear empty lines
 keymap("n", "<leader>el", ":g/^$/d<CR><leader>l", opts)
@@ -42,7 +42,7 @@ keymap("n", "<leader>w", ":w<CR>", opts)
 
 -- find and replace
 keymap("n", "<C-s>", ":%s/", opts) -- buffer
-keymap("v", "<C-s>", ":s/", opts) -- visual
+keymap("v", "<C-s>", ":s/", opts)  -- visual
 
 -- find and replace - current directory (custom script)
 keymap("n", "<leader>fr", ":! fnr ", opts)
@@ -55,8 +55,8 @@ keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
 
 -- move text up and down
-keymap("v", "<A-j>", ":m .+1<CR>==", opts)
-keymap("v", "<A-k>", ":m .-2<CR>==", opts)
+keymap("v", "<A-j>", ":m '>+1<CR>gv=gv", opts)
+keymap("v", "<A-k>", ":m '<-2<CR>gv=gv", opts)
 
 -- better terminal navigation
 keymap("t", "<C-h>", "<C-\\><C-N><C-w>h", term_opts)
@@ -90,7 +90,8 @@ keymap("n", "<F10>", ":set spell!<CR>", opts)
 keymap("v", "<leader>ok", ":s/\\(\\w.*\\)/", opts)
 
 -- ALE
-keymap("n", "<leader>aa", ":ALEFix<CR>", opts)
+-- keymap("n", "<leader>aa", ":ALEFix<CR>", opts)
+keymap("n", "<leader>aa", "<cmd>lua vim.lsp.buf.format()<CR>", opts)
 
 -- base64
 vim.cmd([[

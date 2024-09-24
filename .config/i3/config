@@ -22,17 +22,15 @@ bindsym $mod+Shift+o exec --no-startup-id ~/.local/bin/toggle_opacity 0.97
 
 # toggle window monitor
 # bindsym $mod+Shift+w exec --no-startup-id i3-monitor-toggle
-bindsym $mod+Shift+w exec --no-startup-id zsh ~/.screenlayout/laptop-and-wide.sh
+bindsym $mod+Shift+d exec --no-startup-id zsh ~/.screenlayout/laptop-and-wide.sh
+bindsym $mod+Shift+w exec --no-startup-id zsh ~/.screenlayout/wide.sh
 
 # audio
-# bindsym XF86AudioRaiseVolume exec --no-startup-id pactl-wrapper UP 5 && $refresh_i3status
-# bindsym XF86AudioLowerVolume exec --no-startup-id pactl-wrapper DOWN 5 && $refresh_i3status
-# bindsym XF86AudioMute exec --no-startup-id pactl-wrapper TOGGLE_MUTE && $refresh_i3status
-
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pulsemixer --change-volume +5 --max-volume 100 #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pulsemixer --change-volume -5 --max-volume 100 #decrease sound volume
+bindsym Shift+XF86AudioRaiseVolume exec --no-startup-id pulsemixer --change-volume +5 --max-volume 300 #increase sound volume
+bindsym Shift+XF86AudioLowerVolume exec --no-startup-id pulsemixer --change-volume -5 --max-volume 300 #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle # mute sound
 
 # brightness
 bindsym XF86MonBrightnessUp exec --no-startup-id light -A 5
@@ -89,6 +87,7 @@ bindsym $mod+f fullscreen toggle
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
+bindsym $mod+Shift+s sticky toggle
 
 # toggle tiling / floating
 # bindsym $mod+Shift+space floating toggle
@@ -118,6 +117,7 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 set $ws11 "11"
+set $ws12 "12"
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
@@ -131,6 +131,7 @@ bindsym $mod+8 workspace number $ws8
 bindsym $mod+9 workspace number $ws9
 bindsym $mod+0 workspace number $ws10
 bindsym $mod+p workspace number $ws11
+bindsym $mod+o workspace number $ws12
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number $ws1
@@ -195,6 +196,7 @@ bindsym $mod+r mode "resize"
 set $faded-red #f9533a
 set $maroon #65041d
 set $mustard #a17112
+set $green #305231
 set $lilac #9c6ac6
 set $road-paint-yellow #f9ab00
 set $teal #0f644d
@@ -206,7 +208,7 @@ bar {
 	position top
   status_command i3status
 	colors {
-	  focused_workspace $mustard $mustard  #ffffff
+	  focused_workspace $green $green  #ffffff
 		urgent_workspace $lilac $lilac #ffffff
 	}
 }
@@ -231,8 +233,8 @@ floating_maximum_size -1 x -1
 set $mode_system LOCK(l), LOGOUT(g), SUSPEND(s), REBOOT(r), SHUTDOWN(CTRL+s)
 
 mode "$mode_system" {
-    # bindsym l exec --no-startup-id betterlockscreen -l dim, mode "default"
-    bindsym l exec --no-startup-id i3lock --color 000000, mode "default"
+    bindsym l workspace number $ws12; exec --no-startup-id betterlockscreen -l dim, mode "default"
+    # bindsym l exec --no-startup-id workspace number $ws12 && i3lock --color 111111, mode "default"
     bindsym g exec --no-startup-id i3-msg exit, mode "default"
     bindsym s exec --no-startup-id systemctl suspend, mode "default"
     bindsym r exec --no-startup-id systemctl reboot, mode "default"
