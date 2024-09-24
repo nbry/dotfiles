@@ -1,7 +1,7 @@
 return {
   {
-		"hrsh7th/nvim-cmp",
-		config = function()
+    "hrsh7th/nvim-cmp",
+    config = function()
       local cmp_status_ok, cmp = pcall(require, "cmp")
       if not cmp_status_ok then
         return
@@ -126,15 +126,14 @@ return {
           native_menu = false,
         },
       })
-		end,
+    end,
   },
-	{ "hrsh7th/cmp-buffer" },
-	{ "hrsh7th/cmp-cmdline" },
-	{ "hrsh7th/cmp-nvim-lsp" },
-	{ "hrsh7th/cmp-nvim-lua" },
-	{ "hrsh7th/cmp-path" },
-	{ "dcampos/nvim-snippy" },
-	{ "dcampos/cmp-snippy" },
-	{ "honza/vim-snippets" },
+  { "hrsh7th/cmp-buffer" },
+  { "hrsh7th/cmp-cmdline" },
+  { "hrsh7th/cmp-nvim-lsp" },
+  { "hrsh7th/cmp-nvim-lua" },
+  { "hrsh7th/cmp-path" },
+  { "dcampos/nvim-snippy" },
+  { "dcampos/cmp-snippy" },
+  { "honza/vim-snippets" },
 }
-
