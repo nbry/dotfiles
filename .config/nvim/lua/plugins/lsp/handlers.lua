@@ -28,7 +28,7 @@ handlers.setup = function()
 			focusable = false,
 			style = "minimal",
 			border = "double",
-			source = "always",
+			-- source = "always",
 			header = "",
 			prefix = "",
 		},
@@ -70,4 +70,3 @@ end
 handlers.capabilities = cmp_nvim_lsp.default_capabilities()
 
 return handlers
-
