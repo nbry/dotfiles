@@ -1,6 +1,6 @@
 local space_holywar = {
-  spaces = 2,
-  expand = true,
+	spaces = 2,
+	expand = true,
 }
 
 -- stylua: ignore
@@ -44,7 +44,7 @@ local options = {
 
 -- Set all options
 for option, setting in pairs(options) do
-  vim.opt[option] = setting
+	vim.opt[option] = setting
 end
 
 vim.cmd([[

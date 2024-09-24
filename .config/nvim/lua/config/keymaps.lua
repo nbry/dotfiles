@@ -42,7 +42,7 @@ keymap("n", "<leader>w", ":w<CR>", opts)
 
 -- find and replace
 keymap("n", "<C-s>", ":%s/", opts) -- buffer
-keymap("v", "<C-s>", ":s/", opts)  -- visual
+keymap("v", "<C-s>", ":s/", opts) -- visual
 
 -- find and replace - current directory (custom script)
 keymap("n", "<leader>fr", ":! fnr ", opts)
@@ -90,8 +90,8 @@ keymap("n", "<F10>", ":set spell!<CR>", opts)
 keymap("v", "<leader>ok", ":s/\\(\\w.*\\)/", opts)
 
 -- ALE
--- keymap("n", "<leader>aa", ":ALEFix<CR>", opts)
-keymap("n", "<leader>aa", "<cmd>lua vim.lsp.buf.format()<CR>", opts)
+keymap("n", "<leader>aa", ":ALEFix<CR>", opts)
+-- keymap("n", "<leader>aa", "<cmd>lua vim.lsp.buf.format()<CR>", opts)
 
 -- base64
 vim.cmd([[

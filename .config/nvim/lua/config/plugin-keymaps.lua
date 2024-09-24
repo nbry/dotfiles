@@ -8,10 +8,10 @@ keymap("n", "<leader>ff", "<cmd>Telescope find_files<cr>", opts)
 keymap("n", "<leader>rg", "<cmd>Telescope live_grep<cr>", opts)
 keymap("n", "<leader>mf", "<cmd>Telescope media_files<cr>", opts)
 keymap(
-  "n",
-  "<C-p>",
-  "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>",
-  opts
+	"n",
+	"<C-p>",
+	"<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>",
+	opts
 )
 
 ---------------
