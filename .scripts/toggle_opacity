@@ -1,13 +1,17 @@
 #!/usr/bin/env bash
 
-DEFAULT_OPACITY=0.95
+DEFAULT_OPACITY=0.97
 
 ## If alacritty.yml does not exist, raise an alert
 [[ ! -f ~/.config/alacritty/alacritty.yml ]] && \
     notify-send "alacritty.yml does not exist" && exit 0
 
-## Fetch background_opacity from alacritty.yml
+## Fetch opacity from alacritty.yml
 opacity=$(awk '$1 == "opacity:" {print $2; exit}' \
+    ~/.config/alacritty/alacritty.yml)
+
+## Fetch background_opacity from alacritty.yml for older versions of alacritty
+background_opacity=$(awk '$1 == "background_opacity:" {print $2; exit}' \
     ~/.config/alacritty/alacritty.yml)
 
 ## Assign toggle opacity value
@@ -22,4 +26,8 @@ esac
 
 ## Replace opacity value in alacritty.yml
 sed -i -- "s/opacity: $opacity/opacity: $toggle_opacity/" \
+    ~/.config/alacritty/alacritty.yml
+
+## Replace background_opacity value in alacritty.yml
+sed -i -- "s/background_opacity: $background_opacity/background_opacity: $toggle_opacity/" \
     ~/.config/alacritty/alacritty.yml
