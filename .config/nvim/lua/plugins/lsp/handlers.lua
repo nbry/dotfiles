@@ -28,7 +28,7 @@ handlers.setup = function()
 			focusable = false,
 			style = "minimal",
 			border = "double",
-			source = "always",
+			-- source = "always",
 			header = "",
 			prefix = "",
 		},
