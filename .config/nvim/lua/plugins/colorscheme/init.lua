@@ -6,30 +6,30 @@ local colorscheme_plugins = {
 }
 
 vim.g.themes = {
-	{ name = "catppuccin", config = "catpuccin" },
-	{ name = "gruvbox-baby", config = "gruvbox-baby" },
-	{ name = "gruvbox-material", config = "gruvbox-material" },
-	{ name = "nightfox", config = "nightfox" },
-	-- { name = "dawnfox", config = "nightfox" },
-	-- { name = "duskfox", config = "nightfox" },
-	{ name = "nordfox", config = "nightfox" },
-	{ name = "terafox", config = "nightfox" },
-	{ name = "carbonfox", config = "nightfox" },
+	{ name = "catppuccin", plugin = "catpuccin" },
+	{ name = "gruvbox-baby", plugin = "gruvbox-baby" },
+	{ name = "gruvbox-material", plugin = "gruvbox-material" },
+	{ name = "nightfox", plugin = "nightfox" },
+	-- { name = "dawnfox", plugin = "nightfox" },
+	-- { name = "duskfox", plugin = "nightfox" },
+	{ name = "nordfox", plugin = "nightfox" },
+	{ name = "terafox", plugin = "nightfox" },
+	{ name = "carbonfox", plugin = "nightfox" },
 }
 
 local plugin_loaded = {}
 
--- This loop allows the installation of all the colorscheme plugins,
--- but sets the theme to the choice defined in this file
---
--- Iterate through themes
--- 1. Attempt to go find plugin config
--- 2. If exists, then check if the plugin config is the choice
--- 3. If it is the choice, modify the config function to set the colorscheme
+----
+-- This loop is responsible for loading all the available theme plugins
+----
 for _, theme in pairs(vim.g.themes) do
 	local exists, plugin = pcall(require, "plugins.colorscheme.themes." .. theme.name)
 	if exists then
-		if theme.name == vim.g.theme_choice then
+		----
+		-- Set high priority and turn off lazy loading for DEFAULT_THEME.
+		-- Set the theme.
+		----
+		if theme.name == DEFAULT_THEME then
 			local base_config = plugin.config
 			plugin.config = function()
 				if base_config then
@@ -37,16 +37,25 @@ for _, theme in pairs(vim.g.themes) do
 				end
 				vim.cmd.colorscheme(theme.name)
 			end
+			plugin.lazy = false
+			plugin.priority = 1000
 		end
 
-		-- If a theme uses the same config (e.g. nightfox and terafox both use nightfox config)
-		if not plugin_loaded[theme.config] then
-			plugin_loaded[theme.config] = true
+		----
+		-- This ignores configs already loaded
+		-- (e.g. carbonfox & terafox both use nightfox config, which is already loaded)
+		----
+		if not plugin_loaded[theme.plugin] then
+			plugin_loaded[theme.plugin] = true
 			table.insert(colorscheme_plugins, plugin)
 		end
 	end
 end
 
+----
+-- Set the theme (and pointer) to whichever theme
+-- is next on the list
+----
 function NextTheme()
 	local currentIndex
 	for i, theme in ipairs(vim.g.themes) do
@@ -55,8 +64,8 @@ function NextTheme()
 			break
 		end
 	end
-
 	local nextIndex = (currentIndex % #vim.g.themes) + 1
+
 	vim.g.theme_choice = vim.g.themes[nextIndex].name
 	vim.cmd.colorscheme(vim.g.theme_choice)
 	vim.notify.dismiss()
@@ -65,6 +74,10 @@ function NextTheme()
 	})
 end
 
+----
+-- Use sed to replace the DEFAULT_THEME variable
+-- at the top of this file
+----
 function SaveCurrentTheme()
 	local command = "sed -i '"
 		.. "s/local DEFAULT_THEME "
@@ -78,7 +91,6 @@ function SaveCurrentTheme()
 		.. "' "
 		.. "~/.dotfiles/.config/nvim/lua/plugins/colorscheme/init.lua"
 
-	-- vim.notify(command)
 	os.execute(command)
 	vim.notify.dismiss()
 	vim.notify(vim.g.theme_choice, nil, {
@@ -86,9 +98,9 @@ function SaveCurrentTheme()
 	})
 end
 
--------------------
--- THEME CHOOSER --
--------------------
+----
+-- THEME CHOOSER
+----
 local opts = { noremap = true, silent = true }
 local keymap = vim.api.nvim_set_keymap
 keymap("n", "<C-\\>", "<cmd>lua NextTheme()<CR>", opts)
