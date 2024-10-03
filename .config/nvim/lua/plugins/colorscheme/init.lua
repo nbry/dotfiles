@@ -1,4 +1,4 @@
-local DEFAULT_THEME = "gruvbox-baby"
+local DEFAULT_THEME = "gruvbox-material"
 vim.g.theme_choice = DEFAULT_THEME
 
 local colorscheme_plugins = {
@@ -89,7 +89,7 @@ function SaveCurrentTheme()
 		.. vim.g.theme_choice
 		.. '"/'
 		.. "' "
-		.. "~/.dotfiles/.config/nvim/lua/plugins/colorscheme/init.lua"
+		.. "~/dotfiles/.config/nvim/lua/plugins/colorscheme/init.lua"
 
 	os.execute(command)
 	vim.notify.dismiss()

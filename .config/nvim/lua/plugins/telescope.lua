@@ -1,7 +1,7 @@
-local status_ok, telescope = pcall(require, "telescope")
-if not status_ok then
-	return
-end
+-- local status_ok, telescope = pcall(require, "telescope")
+-- if not status_ok then
+-- 	return
+-- end
 
 return {
 	"nvim-telescope/telescope.nvim",
@@ -9,7 +9,7 @@ return {
 	config = function()
 		local actions = require("telescope.actions")
 
-		telescope.setup({
+		require('telescope').setup({
 			defaults = {
 				prompt_prefix = " ",
 				selection_caret = " ",
