@@ -1,27 +1,32 @@
-alias wide="zsh ~/.screenlayout/wide.sh"
-alias laptopandwide="zsh ~/.screenlayout/laptop-and-wide.sh"
-alias singlescreen="zsh ~/.screenlayout/single-tp.sh"
-alias jssandbox="git clone git@github.com:nbry/js-sandbox.git"
-alias tssandbox="git clone git@github.com:nbry/ts-sandbox.git"
-alias lg="ll --group-directories-first"
+# alias wide="zsh ~/.screenlayout/wide.sh"
+# alias laptopandwide="zsh ~/.screenlayout/laptop-and-wide.sh"
+# alias singlescreen="zsh ~/.screenlayout/single-tp.sh"
+# alias jssandbox="git clone git@github.com:nbry/js-sandbox.git"
+# alias tssandbox="git clone git@github.com:nbry/ts-sandbox.git"
+# alias lg="ll --group-directories-first"
+# alias setbackground="feh --bg-scale"
+# alias configi3="nvim ~/.config/i3/config"
+
+alias zreset="source ~/.zshrc"
 alias nv="nvim"
 alias pathy='echo $PATH | sed "s/:/\n/g"'
-alias setbackground="feh --bg-scale"
 alias tarxf="tar -xf"
 alias vim="nvim"
 alias xclip="xclip -selection c"
-alias zreset="source ~/.zshrc"
+alias ls="ls --color=auto --group-directories-first -1"
 
 ## config
 alias configaliases="nvim ~/.zsh_aliases"
 alias configbar="nvim ~/.config/i3status/config"
 alias configdunst="nvim ~/.config/dunst/dunstrc"
-alias configi3="nvim ~/.config/i3/config"
+alias configi3="nvim ~/.config/regolith3/i3/config.d/custom"
 alias configneovim="nvim ~/.config/nvim/lua"
 alias configpicom="nvim ~/.config/picom/picom.conf"
 alias configterminal="nvim ~/.config/alacritty/alacritty.yml"
 alias configzshrc="nvim ~/.zshrc"
 
+alias viewconfigi3="nvim ~/dotfiles/.config/i3/config"
+alias viewconfigregolith="ls /usr/share/regolith/i3/config.d/"
 
 ## git
 alias ga="git add"

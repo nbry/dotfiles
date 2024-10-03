@@ -1,0 +1,17 @@
+wm.bar.position: top
+wm.bar.background.color: #000000
+wm.bar.position: top
+wm.window.border.size: 3
+wm.client.focused.color.child_border: #a17112
+
+####
+# Keybindings
+####
+
+# open settings menu
+wm.binding.display: space
+
+# open rofi
+wm.binding.launcher.app: d
+regolith.wallpaper.file: /usr/share/backgrounds/Fuji_san_by_amaral.png
+regolith.lockscreen.wallpaper.file: /usr/share/backgrounds/Fuji_san_by_amaral.png

@@ -5,30 +5,29 @@ window:
 
   padding:
     x: 5
-    y: 5
+    y: 9
 
   # Spread additional padding evenly around the terminal content.
   dynamic_padding: true
 
-  opacity: 1
+  opacity: 0.97
 
 font:
   normal:
-    family: "MesloLGS NF"
-    # family: "Fira Code"
+    family: "Fira Code Nerd Font"
     # family: monospace
     style: Regular
 
   bold:
-    family: "MesloLGS NF"
+    family: "Fira Code Nerd Font"
     style: Bold
 
   italic:
-    family: "MesloLGS NF"
+    family: "Fira Code Nerd Font"
     style: Italic
 
   bold_italic:
-    family: "MesloLGS NF"
+    family: "Fira Code Nerd Font"
     style: Bold Italic
 
   size: 11
@@ -38,6 +37,8 @@ font:
     y: 3
 
 draw_bold_text_with_bright_colors: false
+
+background_opacity: 0.97
 
 # # Dark - Gruvbox Material:
 colors:
