@@ -21,12 +21,16 @@ alias configbar="nvim ~/.config/i3status/config"
 alias configdunst="nvim ~/.config/dunst/dunstrc"
 alias configi3="nvim ~/.config/regolith3/i3/config.d/custom"
 alias configneovim="nvim ~/.config/nvim/lua"
-alias configpicom="nvim ~/.config/picom/picom.conf"
+alias configpicom="nvim ~/.config/regolith3/picom/config"
 alias configterminal="nvim ~/.config/alacritty/alacritty.yml"
 alias configzshrc="nvim ~/.zshrc"
 
 alias viewconfigi3="nvim ~/dotfiles/.config/i3/config"
 alias viewconfigregolith="ls /usr/share/regolith/i3/config.d/"
+alias gtconfigregolith="cd /usr/share/regolith/i3/config.d/"
+
+alias vsc="(code . &) && exit"
+alias npxmocha="npx mocha --timeout 0 --colors"
 
 ## git
 alias ga="git add"
@@ -39,6 +43,7 @@ alias glon="git log --oneline -n"
 alias gs="git status"
 alias gp="git push"
 alias gpso="git push --set-upstream origin"
+alias grst="git reset HEAD~1"
 
 function mod_commit () {
   git stash;

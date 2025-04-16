@@ -16,7 +16,7 @@ return {
 			typescript = { "eslint", "prettier" },
 			typescriptreact = { "eslint", "prettier" },
 			yaml = { "prettier" },
-			-- sql = { "pgformatter" },
+			sql = { "pgformatter" },
 		}
 		vim.g["ale_rust_rustfmt_options"] = "--edition 2021"
 		vim.g["ale_fix_on_save"] = 1

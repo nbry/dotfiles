@@ -28,7 +28,6 @@ handlers.setup = function()
 			focusable = false,
 			style = "minimal",
 			border = "double",
-			-- source = "always",
 			header = "",
 			prefix = "",
 		},
@@ -54,12 +53,6 @@ end
 
 handlers.on_attach = function(_, bufnr) -- client, bufnr
 	lsp_keymaps(bufnr)
-	-- require("lsp_signature").on_attach({
-	-- 	bind = true, -- mandatory
-	-- 	handler_opts = {
-	-- 		border = "double",
-	-- 	},
-	-- }, bufnr)
 end
 
 local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")

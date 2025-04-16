@@ -24,6 +24,26 @@ end
 
 return {
 	{
+		"williamboman/mason.nvim",
+		lazy = false,
+	},
+	{
+		"williamboman/mason-lspconfig.nvim",
+		lazy = false,
+		config = function()
+			require("mason").setup({
+				ui = {
+					border = "double",
+				},
+			})
+
+			local mlsp = require("mason-lspconfig")
+			mlsp.setup({
+				ensure_installed = servers,
+			})
+		end,
+	},
+	{
 		"neovim/nvim-lspconfig",
 		lazy = false,
 		config = function()

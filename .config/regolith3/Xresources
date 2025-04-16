@@ -13,5 +13,11 @@ wm.binding.display: space
 
 # open rofi
 wm.binding.launcher.app: d
-regolith.wallpaper.file: /usr/share/backgrounds/Fuji_san_by_amaral.png
-regolith.lockscreen.wallpaper.file: /usr/share/backgrounds/Fuji_san_by_amaral.png
+
+####
+# Wallpaper
+####
+regolith.wallpaper.file: /home/nbry/.local/share/backgrounds/2024-10-02-10-42-52-leaves.jpg
+regolith.lockscreen.wallpaper.file: /home/nbry/.local/share/backgrounds/2024-10-02-10-42-52-leaves.jpg
+!regolith.look.path: /usr/share/regolith-look/default
+regolith.look.path: /usr/share/regolith-look/lascaille

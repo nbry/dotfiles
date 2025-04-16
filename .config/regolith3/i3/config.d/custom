@@ -1,2 +1,6 @@
 # vim: filetype=i3config
+
 bindsym Mod4+Shift+o exec --no-startup-id ~/dotfiles/.scripts/toggle_opacity 0.97
+
+# Allow for better dragging of chrome windows
+exec_always --no-startup-id ~/tools/i3-chrome-tab-dragging/i3-chrome-tab-dragging.py

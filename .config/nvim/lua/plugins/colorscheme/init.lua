@@ -1,4 +1,4 @@
-local DEFAULT_THEME = "gruvbox-material"
+local DEFAULT_THEME = "gruvbox-baby"
 vim.g.theme_choice = DEFAULT_THEME
 
 local colorscheme_plugins = {
@@ -72,6 +72,7 @@ function NextTheme()
 	vim.notify(vim.g.theme_choice, nil, {
 		title = "colorscheme",
 	})
+	-- print("colorscheme changed: ", vim.g.theme_choice)
 end
 
 ----
@@ -96,6 +97,7 @@ function SaveCurrentTheme()
 	vim.notify(vim.g.theme_choice, nil, {
 		title = "colorscheme SAVED",
 	})
+	-- print("colorscheme saved: ", vim.g.theme_choice)
 end
 
 ----
