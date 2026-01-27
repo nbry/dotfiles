@@ -1,0 +1,49 @@
+# general
+alias ls="ls --color=auto --group-directories-first -1"
+alias nv="nvim ."
+alias pathy='echo $PATH | sed "s/:/\n/g"'
+alias tarxf="tar -xf"
+alias xclip="xclip -selection c"
+alias zreset="source ~/.zshrc"
+
+# config
+alias configaliases="nvim ~/.zsh_aliases"
+alias configdunst="nvim ~/.config/dunst/dunstrc"
+alias configneovim="nvim ~/.config/nvim/lua"
+alias configzshrc="nvim ~/.zshrc"
+alias configkitty="nvim ~/.config/kitty/kitty.conf"
+
+# code
+alias vsc="(code . &) && exit"
+alias npxmocha="npx mocha --timeout 0 --colors"
+
+# git
+alias ga="git add"
+alias gca="git commit --amend"
+alias gcv="git commit -v"
+alias glon="git log --oneline -n"
+alias gs="git status"
+alias gpso="git push --set-upstream origin"
+alias grst="git reset HEAD~1"
+
+function mod_commit () {
+  git stash;
+  git rebase -i HEAD~"$1";
+  git stash pop;
+  git add .
+  git commit --amend --no-edit
+  git rebase --continue
+}
+
+function gsb {
+    provided_branch="$1"
+
+    # Step 2: Checkout the provided branch
+    git checkout "$provided_branch"
+
+    # Step 3: Pull the latest changes from the provided branch
+    git pull origin "$provided_branch"
+
+    # Step 4: Switch back to the original branch
+    git checkout -
+}
