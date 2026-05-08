@@ -63,3 +63,5 @@ export PATH="$HOME/.cargo/bin:$PATH"
 # starship
 prompt off
 eval "$(starship init zsh)"
+
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh

@@ -9,6 +9,7 @@ local options = {
     hlsearch = false,
     ignorecase = true,
     incsearch = true,
+    mouse = "a",
     number = true,
     relativenumber = false,
     scrolloff = 8,

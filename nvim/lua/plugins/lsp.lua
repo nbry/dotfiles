@@ -12,11 +12,6 @@ return {
 
     local capabilities = vim.lsp.protocol.make_client_capabilities()
 
-    -- LSP handlers with border (global)
-    local border_opts = { border = {"┌", "─", "┐", "│", "┘", "─", "└", "│"}, style = "minimal" }
-    vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, border_opts)
-    vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, border_opts)
-
     -- Lua
     vim.lsp.config.lua_ls = {
       capabilities = capabilities,

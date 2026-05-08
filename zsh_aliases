@@ -8,12 +8,11 @@ alias zreset="source ~/.zshrc"
 
 # config
 alias configaliases="nvim ~/.zsh_aliases"
+alias configother="nvim ~/.zsh_other"
 alias configdunst="nvim ~/.config/dunst/dunstrc"
 alias configneovim="nvim ~/.config/nvim/lua"
 alias configzshrc="nvim ~/.zshrc"
 alias configkitty="nvim ~/.config/kitty/kitty.conf"
-
-# code
 alias vsc="(code . &) && exit"
 alias npxmocha="npx mocha --timeout 0 --colors"
 
