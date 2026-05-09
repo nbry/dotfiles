@@ -1,5 +1,5 @@
 # general
-alias ls="ls --color=auto --group-directories-first -1"
+alias ls="LC_COLLATE=C ls --color=auto --group-directories-first -1"
 alias nv="nvim ."
 alias pathy='echo $PATH | sed "s/:/\n/g"'
 alias tarxf="tar -xf"
@@ -7,6 +7,7 @@ alias xclip="xclip -selection c"
 alias zreset="source ~/.zshrc"
 
 # config
+alias configalacritty="nvim ~/.config/alacritty/alacritty.toml"
 alias configaliases="nvim ~/.zsh_aliases"
 alias configother="nvim ~/.zsh_other"
 alias configdunst="nvim ~/.config/dunst/dunstrc"

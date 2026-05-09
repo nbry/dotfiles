@@ -1,0 +1,37 @@
+# Dotfiles Configuration
+
+[[configs]]
+description = "Alacritty terminal emulator config"
+enabled = true
+name = "alacritty"
+source = "$DOTFILES_DIR/alacritty"
+target = "$HOME/.config/alacritty"
+
+[[configs]]
+description = "Neovim configuration"
+enabled = true
+name = "nvim"
+source = "$DOTFILES_DIR/nvim"
+target = "$HOME/.config/nvim"
+
+[[configs]]
+description = "Zsh main configuration"
+enabled = true
+name = "zshrc"
+source = "$DOTFILES_DIR/zsh/zshrc"
+target = "$HOME/.zshrc"
+
+[[configs]]
+description = "Zsh aliases and functions"
+enabled = true
+name = "zsh_aliases"
+source = "$DOTFILES_DIR/zsh/zsh_aliases"
+target = "$HOME/.zsh_aliases"
+
+# Optional: Uncomment below to also manage kitty terminal config
+# [[configs]]
+# name = "kitty"
+# target = "$HOME/.config/kitty"
+# source = "$DOTFILES_DIR/kitty"
+# enabled = false
+# description = "Kitty terminal emulator config"

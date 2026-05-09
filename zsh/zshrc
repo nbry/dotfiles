@@ -1,13 +1,9 @@
-# Set up the prompt
+# History settings
+setopt histignorealldups
+setopt sharehistory
 
-autoload -Uz promptinit
-promptinit
-prompt adam1
-
-setopt histignorealldups sharehistory
-
-# Use emacs keybindings even if our EDITOR is set to vi
-bindkey -e
+# Use vi keybindings
+bindkey -v
 
 # Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
 HISTSIZE=1000
@@ -38,11 +34,11 @@ zstyle ':completion:*' verbose true
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
-export TERMINAL="kitty"
+export TERMINAL="alacritty"
 export EDITOR="nvim"
 
 source ~/.zsh_aliases
-source ~/.zsh_other
+# source ~/.zsh_other
 
 # Neovim
 export PATH="/opt/nvim/bin:$PATH"
@@ -60,8 +56,12 @@ eval "$(fnm env --use-on-cd --shell zsh)"
 # rust
 export PATH="$HOME/.cargo/bin:$PATH"
 
-# starship
-prompt off
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 eval "$(starship init zsh)"
 
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+# fnm
+FNM_PATH="/home/nbry/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="$FNM_PATH:$PATH"
+  eval "$(fnm env --shell zsh)"
+fi

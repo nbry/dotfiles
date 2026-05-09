@@ -1,0 +1,193 @@
+#!/usr/bin/env bash
+
+set -e
+
+DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+CONFIG_FILE="$DOTFILES_DIR/config.toml"
+BACKUP_DIR="$HOME/dotfiles_backup"
+BACKUP_SUB_DIR="$BACKUP_DIR/$(date +%Y%m%d_%H%M%S)"
+DRY_RUN=false
+ONLY_CONFIG=""
+
+log() {
+    echo "[$(date '+%Y-%m-%d %H:%M:%S')] $*"
+}
+
+error() {
+    echo "[$(date '+%Y-%m-%d %H:%M:%S')] ERROR: $*" >&2
+}
+
+backup() {
+    local target="$1"
+    if [ -e "$target" ] || [ -L "$target" ]; then
+        mkdir -p "$BACKUP_SUB_DIR"
+        log "Backing up $target"
+        if [ "$DRY_RUN" = true ]; then
+            log "  [DRY RUN] Would backup to $BACKUP_SUB_DIR/$(basename "$target")"
+        else
+            mv "$target" "$BACKUP_SUB_DIR/"
+        fi
+    fi
+}
+
+validate_symlink() {
+    local target="$1"
+    local source="$2"
+
+    if [ ! -L "$target" ]; then
+        error "Failed to create symlink: $target"
+        return 1
+    fi
+
+    local link_target
+    link_target=$(readlink "$target")
+    if [ "$link_target" != "$source" ]; then
+        error "Symlink $target points to $link_target, expected $source"
+        return 1
+    fi
+
+    log "✓ Symlink verified: $target -> $source"
+    return 0
+}
+
+create_symlink() {
+    local source="$1"
+    local target="$2"
+
+    if [ "$DRY_RUN" = true ]; then
+        log "  [DRY RUN] Would create symlink: $target -> $source"
+    else
+        mkdir -p "$(dirname "$target")"
+        ln -s "$source" "$target"
+        validate_symlink "$target" "$source" || return 1
+    fi
+}
+
+parse_toml_configs() {
+    local config_file="$1"
+    yq -r '.configs[] | "\(.name)|\(.target)|\(.source)|\(.enabled)|\(.description)"' "$config_file"
+}
+
+usage() {
+    cat << EOF
+Usage: $0 [OPTIONS]
+
+OPTIONS:
+    --dry-run           Show what would be done without making changes
+    --only CONFIG       Install only the specified config (e.g., --only nvim)
+    --help             Show this help message
+
+Examples:
+    $0                         # Install all enabled configs
+    $0 --dry-run               # Preview changes
+    $0 --only nvim             # Install only nvim config
+    $0 --dry-run --only alacritty
+
+EOF
+}
+
+parse_args() {
+    while [[ $# -gt 0 ]]; do
+        case "$1" in
+            --dry-run)
+                DRY_RUN=true
+                shift
+                ;;
+            --only)
+                ONLY_CONFIG="$2"
+                shift 2
+                ;;
+            --help)
+                usage
+                exit 0
+                ;;
+            *)
+                error "Unknown option: $1"
+                usage
+                exit 1
+                ;;
+        esac
+    done
+}
+
+main() {
+    parse_args "$@"
+
+    if ! command -v yq &> /dev/null; then
+        error "yq is not installed. Please run: ./install-deps.sh"
+        exit 1
+    fi
+
+    if [ ! -f "$CONFIG_FILE" ]; then
+        error "Config file not found: $CONFIG_FILE"
+        exit 1
+    fi
+
+    mkdir -p "$HOME/.config"
+
+    if [ "$DRY_RUN" = true ]; then
+        log "=== DRY RUN MODE ==="
+    fi
+
+    log "Processing dotfiles configuration..."
+
+    local config_count=0
+    local processed_count=0
+    local configs
+    configs=$(parse_toml_configs "$CONFIG_FILE") || {
+        error "Failed to parse config file"
+        exit 1
+    }
+
+    if [ -z "$configs" ]; then
+        error "No configs found in $CONFIG_FILE"
+        exit 1
+    fi
+
+    while IFS='|' read -r name target source enabled desc; do
+        ((config_count++)) || true
+
+        # Allow --only to override enabled flag
+        if [ -z "$ONLY_CONFIG" ] && [ "$enabled" != "true" ]; then
+            log "⊘ Skipping $name (disabled)"
+            continue
+        fi
+
+        if [ -n "$ONLY_CONFIG" ] && [ "$ONLY_CONFIG" != "$name" ]; then
+            continue
+        fi
+
+        ((processed_count++)) || true
+        log "Processing: $name"
+        log "  Description: $desc"
+
+        target="${target/\$HOME/$HOME}"
+        target="${target/\$DOTFILES_DIR/$DOTFILES_DIR}"
+        source="${source/\$HOME/$HOME}"
+        source="${source/\$DOTFILES_DIR/$DOTFILES_DIR}"
+
+        if [ ! -e "$source" ] && [ ! -d "$source" ]; then
+            error "Source not found: $source"
+            continue
+        fi
+
+        backup "$target"
+        create_symlink "$source" "$target" || continue
+
+    done <<< "$configs"
+
+    if [ "$processed_count" -eq 0 ] && [ -n "$ONLY_CONFIG" ]; then
+        error "No matching config found: $ONLY_CONFIG"
+        exit 1
+    fi
+
+    log ""
+    if [ "$DRY_RUN" = true ]; then
+        log "DRY RUN completed. No changes were made."
+    else
+        log "Setup completed successfully!"
+    fi
+    log "Backups stored in: $BACKUP_DIR"
+}
+
+main "$@"
