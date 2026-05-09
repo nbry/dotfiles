@@ -2,10 +2,12 @@
 
 set -e
 
-DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-CONFIG_FILE="$DOTFILES_DIR/config.toml"
+DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+DOTFILES_CONFIG="$DOTFILES_DIR/config.toml"
+
 BACKUP_DIR="$HOME/dotfiles_backup"
 BACKUP_SUB_DIR="$BACKUP_DIR/$(date +%Y%m%d_%H%M%S)"
+
 DRY_RUN=false
 ONLY_CONFIG=""
 
@@ -118,8 +120,8 @@ main() {
         exit 1
     fi
 
-    if [ ! -f "$CONFIG_FILE" ]; then
-        error "Config file not found: $CONFIG_FILE"
+    if [ ! -f "$DOTFILES_CONFIG" ]; then
+        error "Config file not found: $DOTFILES_CONFIG"
         exit 1
     fi
 
@@ -134,13 +136,13 @@ main() {
     local config_count=0
     local processed_count=0
     local configs
-    configs=$(parse_toml_configs "$CONFIG_FILE") || {
+    configs=$(parse_toml_configs "$DOTFILES_CONFIG") || {
         error "Failed to parse config file"
         exit 1
     }
 
     if [ -z "$configs" ]; then
-        error "No configs found in $CONFIG_FILE"
+        error "No configs found in $DOTFILES_CONFIG"
         exit 1
     fi
 
