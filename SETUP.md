@@ -53,7 +53,20 @@ sudo dnf install neovim
 
 ### Install a FiraCode Nerd Font
 
-[Nerd Font Downloads](https://www.nerdfonts.com/font-downloads)
+Download the zipped file for FiraCode Nerd Font from [Nerd Font Downloads](https://www.nerdfonts.com/font-downloads).
+
+```
+# Assuming the zipped file is in ~/Downloads
+mkdir -p ~/.local/share/fonts
+cd ~/Downloads
+unzip FiraCode.zip -d FiraCodeNF
+cp FiraCodeNF/*.ttf ~/.local/share/fonts/
+fc-cache -fv
+
+# Verify
+fc-list | grep "FiraCode Nerd Font"
+```
+
 
 ### Install Starship Prompt
 
