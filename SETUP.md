@@ -37,7 +37,7 @@ sudo dnf install neovim
 1. Navigate to [Rust Website](https://rust-lang.org/tools/install/)
 2. Use whatever `curl` command they use for rustup
 
-### Install nfm
+### Install fnm
 
 1. [fnm github](https://github.com/Schniz/fnm)
 
@@ -45,7 +45,7 @@ sudo dnf install neovim
 
 0. Requires rustup (follow the "Install Rust" step)
 1. Navigate to [INSTALL.md of alacritty github](https://github.com/alacritty/alacritty/blob/master/INSTALL.md)
-2. Follow "Prerequsites" (git clone and cd into project)
+2. Follow "Prerequisites" (git clone and cd into project)
 3. DO NOT DO THE DEFAULT CARGO INSTALL. Setup the rust compiler (rustup)
 4. Follow Fedora specific instructions. Install dependencies
 5. Follow Build and Post Build
@@ -62,7 +62,7 @@ sudo dnf install neovim
 
 ```
 # This is the default location
-cat .config/starship.toml
+cat ~/.config/starship.toml
 ```
 
 ### Setup git
@@ -104,7 +104,7 @@ sudo dnf install yq
 cd
 git clone https://github.com/nbry/dotfiles
 cd dotfiles
-chmod+x ./bin/dotsetup
+chmod +x ./bin/dotsetup
 ./bin/dotsetup
 
 # Verify alacritty, neovim, and zsh configs
