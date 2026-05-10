@@ -1,0 +1,18 @@
+{
+  "KPackageStructure": "Plasma/LookAndFeel",
+  "KPlugin": {
+    "Authors": [
+      {
+        "Email": "",
+        "Name": "User"
+      }
+    ],
+    "Category": "",
+    "Description": "Custom Plasma 6 Look and Feel",
+    "Id": "org.github.nbry.Nbry",
+    "License": "GPLv2+",
+    "Name": "Custom",
+    "Version": "1.0",
+    "Website": ""
+  }
+}
