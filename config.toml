@@ -28,6 +28,13 @@ name = "zsh_aliases"
 source = "$DOTFILES_DIR/zsh/zsh_aliases"
 target = "$HOME/.zsh_aliases"
 
+[[configs]]
+description = "KDE Plasma look-and-feel theme (Nbry)"
+enabled = true
+name = "kde-theme"
+source = "$DOTFILES_DIR/kde/org.github.nbry.Nbry"
+target = "$HOME/.local/share/plasma/look-and-feel/org.github.nbry.Nbry"
+
 # Optional: Uncomment below to also manage kitty terminal config
 # [[configs]]
 # name = "kitty"
