@@ -54,11 +54,15 @@ style = "Regular"
 [font.offset]
 y = 3
 
+# [[keyboard.bindings]]
+# action = "ToggleViMode"
+# key = "Escape"
+# mode = "~Search"
+# mods = "Shift|Control"
+
 [[keyboard.bindings]]
-action = "ToggleViMode"
-key = "Escape"
-mode = "~Search"
-mods = "Shift|Control"
+key = "Delete"
+chars = "\u001b[3~"
 
 [[keyboard.bindings]]
 action = "SpawnNewInstance"

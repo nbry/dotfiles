@@ -2,8 +2,19 @@
 setopt histignorealldups
 setopt sharehistory
 
-# Use vi keybindings
-bindkey -v
+# vi or emacs bindings
+# bindkey -v
+# bindkey -e
+
+# Home/End keys
+bindkey "^[[H" beginning-of-line
+bindkey "^[[F" end-of-line
+
+bindkey "^[OH" beginning-of-line
+bindkey "^[OF" end-of-line
+
+# Delete
+bindkey "^[[3~" delete-char
 
 # Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
 HISTSIZE=1000
@@ -13,7 +24,6 @@ HISTFILE=~/.zsh_history
 # Use modern completion system
 autoload -Uz compinit
 compinit
-
 
 # Completions
 zstyle ':completion:*' auto-description 'specify: %d'
@@ -54,10 +64,14 @@ if [ -d "$FNM_PATH" ]; then
   eval "`fnm env`"
 fi
 
+export PATH="$HOME/.local/bin:$PATH"
+
 eval "$(fnm env --use-on-cd --shell zsh)"
 
 # rust
 export PATH="$HOME/.cargo/bin:$PATH"
 
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+fpath+=${ZDOTDIR:-~}/.zsh_functions
 eval "$(starship init zsh)"
+eval "$(direnv hook zsh)"

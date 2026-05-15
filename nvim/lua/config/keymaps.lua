@@ -1,5 +1,7 @@
 local keymap = vim.keymap
 
+keymap.set("n", "<C-s>", ":%s/")
+
 -- Clear search highlights
 keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
 keymap.set("n", "<leader>el", ":g/^$/d<CR><leader>l")

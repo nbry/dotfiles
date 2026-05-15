@@ -1,13 +1,13 @@
 # general
 alias ls="LC_COLLATE=C ls --color=auto --group-directories-first -1"
 alias nv="nvim ."
-alias pathy='echo $PATH | sed "s/:/\n/g"'
+alias pathy='echo $PATH | sed "s/:/\n/g" | sort'
 alias tarxf="tar -xf"
 alias xclip="xclip -selection c"
 alias zreset="source ~/.zshrc"
 
 # config
-alias configalacritty="nvim ~/.config/alacritty/alacritty.toml"
+alias configterminal="nvim ~/.config/alacritty/alacritty.toml"
 alias configaliases="nvim ~/.zsh_aliases"
 alias configother="nvim ~/.zsh_other"
 alias configdunst="nvim ~/.config/dunst/dunstrc"
@@ -16,6 +16,7 @@ alias configzshrc="nvim ~/.zshrc"
 alias configkitty="nvim ~/.config/kitty/kitty.conf"
 alias vsc="(code . &) && exit"
 alias npxmocha="npx mocha --timeout 0 --colors"
+alias resetmonitor="kscreen-doctor output.DP-2.mode.2"
 
 # git
 alias ga="git add"
